@@ -1,0 +1,170 @@
+/* Settings Page Styles */
+
+/* Settings Section */
+.settings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+/* Settings Pair: Form and Table Side by Side */
+.settings-pair {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+/* Creator Form Styles */
+.creator-form {
+    flex: 1;
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.creator-form h2 {
+    margin-bottom: 1.5rem;
+    color: var(--black);
+}
+
+.creator-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--black);
+}
+
+.creator-form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.creator-form .btn {
+    padding: 1rem 2rem;
+    background-color: var(--orange);
+    color: var(--white);
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.creator-form .btn:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+/* Table Container Styles */
+.table-container {
+    flex: 1.5;
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    height: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-container h2 {
+    margin-bottom: 1.5rem;
+    color: var(--black);
+}
+
+/* Table Wrapper to allow scrolling */
+.table-wrapper {
+    max-height: 400px; /* Set a max height for the table */
+    overflow-y: auto;
+}
+
+/* Table Styles */
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container table thead {
+    background-color: var(--orange);
+    color: var(--white);
+    position: sticky;
+    top: 0;
+}
+
+.table-container table th,
+.table-container table td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.table-container table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Action Buttons - Style from admin_products.css */
+.btn-action {
+    padding: 0.5rem 1rem;
+    color: var(--white);
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    margin-right: 0.5rem;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-action.edit {
+    background-color: green;
+}
+
+.btn-action.delete {
+    background-color: red;
+}
+
+.btn-action:hover {
+    opacity: 0.8;
+}
+
+/* Style for select dropdown */
+.creator-form select {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    background-color: var(--white);
+    color: var(--black);
+    appearance: none;
+}
+
+/* Optional: Custom arrow for select */
+.creator-form .select-wrapper {
+    position: relative;
+}
+
+.creator-form .select-wrapper::after {
+    content: '\25BC'; /* Down arrow */
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--black);
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+    .settings-pair {
+        flex-direction: column;
+    }
+
+    .creator-form {
+        margin-bottom: 2rem;
+    }
+}

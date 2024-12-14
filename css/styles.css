@@ -1,13 +1,13 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@100;300;400;500;700&display=swap');
 
 /* Color Variables */
 :root {
-  --white: #fff;
-  --black: #222;
-  --green: #77056a;
-  --grey1: #f0f0f0;
-  --grey2: #e9d7d3;
+  --white: #FFFFFF;
+  --black: #000000;
+  --orange: #a54200;
+  --beige: #F5E4C3;
 }
 
 /* Basic Reset */
@@ -25,12 +25,17 @@ html {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.6rem;
-  background-color: var(--white);
+  background-color: var(--beige);
   color: var(--black);
   font-weight: 400;
   font-style: normal;
+}
+
+/* Apply 'Lobster' Font to Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lobster', cursive;
 }
 
 a {
@@ -65,8 +70,9 @@ Header
   overflow-x: hidden;
 }
 
+
 .top-nav {
-  background-color: var(--green);
+  background-color: var(--orange);
   font-size: 1.3rem;
   color: var(--white);
 }
@@ -109,7 +115,7 @@ Navigation
 }
 
 .nav-center .nav-link:hover {
-  color: var(--green);
+  color: var(--orange);
 }
 
 .nav-center .hamburger {
@@ -137,7 +143,7 @@ Navigation
   position: absolute;
   top: 3px;
   right: -3px;
-  background-color: var(--green);
+  background-color: var(--orange);
   color: var(--white);
   border-radius: 50%;
   font-size: 1.3rem;
@@ -154,7 +160,7 @@ Navigation
     flex-direction: column;
     align-items: flex-start;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-    background-color: white;
+    background-color: var(--white);
     height: 100%;
     width: 0%;
     max-width: 35rem;
@@ -209,7 +215,7 @@ Hero Area
 
 .hero,
 .hero .glide__slides {
-  background-color: var(--grey2);
+  background-color: var(--beige);
   position: relative;
   height: calc(100vh - 6rem);
   margin: 0 4rem;
@@ -236,11 +242,13 @@ Hero Area
 .hero .left h1 {
   font-size: 5rem;
   margin: 1rem 0;
+  color: var(--black);
 }
 
 .hero .left p {
   font-size: 1.6rem;
   margin-bottom: 1rem;
+  color: var(--black);
 }
 
 .hero .left .hero-btn {
@@ -248,8 +256,8 @@ Hero Area
   padding: 1rem 3rem;
   font-size: 1.6rem;
   margin-top: 1rem;
-  background-color: var(--green);
-  color: white;
+  background-color: var(--orange);
+  color: var(--white);
 }
 
 .hero .right {
@@ -411,7 +419,6 @@ Hero Media Query
     width: 25rem;
   }
 }
-
 @media only screen and (max-width: 768px) {
   .section {
     padding: 5rem 0;
@@ -448,6 +455,7 @@ Hero Media Query
   text-transform: uppercase;
   margin-bottom: 1rem;
   font-weight: 500;
+  color: var(--black);
 }
 
 .product-center {
@@ -494,7 +502,7 @@ Hero Media Query
 }
 
 .product-info a:hover {
-  color: var(--green);
+  color: var(--orange);
 }
 
 .product-item .icons {
@@ -541,7 +549,7 @@ Hero Media Query
 }
 
 .product-item .icons li:hover {
-  background-color: var(--green);
+  background-color: var(--orange);
   color: var(--white);
 }
 
@@ -578,7 +586,7 @@ Hero Media Query
   position: absolute;
   top: 1rem;
   left: 1rem;
-  background-color: var(--green);
+  background-color: var(--orange);
   padding: 0.5rem 1rem;
   color: var(--white);
   border-radius: 2rem;
@@ -614,7 +622,7 @@ Hero Media Query
 
 .banner {
   position: relative;
-  background-color: var(--grey2);
+  background-color: var(--beige);
   padding: 14rem 20%;
 }
 
@@ -631,6 +639,7 @@ Hero Media Query
   font-size: 2rem;
   font-weight: 300;
   margin-bottom: 1.5rem;
+  color: var(--black);
 }
 
 .banner h1 {
@@ -642,6 +651,17 @@ Hero Media Query
 .banner .btn {
   display: inline-block;
   margin-top: 2rem;
+  background-color: var(--orange);
+  color: var(--white);
+  padding: 1rem 3rem;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.banner .btn:hover {
+  background-color: var(--black);
+  color: var(--white);
 }
 
 @media only screen and (max-width: 1500px) {
@@ -748,11 +768,17 @@ Hero Media Query
 }
 
 .btn-1 {
-  background-color: var(--green);
+  background-color: var(--orange);
   color: var(--white);
   display: inline-block;
   border-radius: 1rem;
   padding: 1rem 2rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-1:hover {
+  background-color: var(--black);
+  color: var(--white);
 }
 
 .contact form div {
@@ -762,24 +788,33 @@ Hero Media Query
 }
 
 .contact form input {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   text-indent: 2rem;
   width: 100%;
   border-radius: 1rem;
   padding: 1.5rem 0;
   outline: none;
-  border: none;
+  border: 1px solid var(--black);
+  background-color: var(--white);
+  color: var(--black);
 }
 
 .contact form a {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: var(--green);
-  color: white;
+  background-color: var(--orange);
+  color: var(--white);
   margin: 0.5rem;
   padding: 1rem 3rem;
   border-radius: 1rem;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.contact form a:hover {
+  background-color: var(--black);
+  color: var(--white);
 }
 
 @media only screen and (max-width: 996px) {
@@ -808,7 +843,7 @@ Hero Media Query
 /* Footer */
 .footer {
   padding: 7rem 1rem;
-  background-color: var(--green);
+  background-color: var(--orange);
 }
 
 footer .row {
@@ -889,14 +924,11 @@ footer .row {
   top: 2rem;
   right: 2rem;
   padding: 0.5rem;
-  background-color: var(--green);
+  background-color: var(--orange);
   border-radius: 50%;
   cursor: pointer;
-}
-
-.popup-close {
   font-size: 3rem;
-  color: white;
+  color: var(--white);
 }
 
 .popup-left {
@@ -935,12 +967,12 @@ footer .row {
 
 .right-content h1 {
   font-size: 4rem;
-  color: #000;
+  color: var(--black);
   margin-bottom: 1.6rem;
 }
 
 .right-content h1 span {
-  color: var(--green);
+  color: var(--orange);
 }
 
 .right-content p {
@@ -955,14 +987,14 @@ footer .row {
   text-indent: 1rem;
   margin-bottom: 1.6rem;
   border-radius: 3rem;
-  background-color: var(--green);
-  color: white;
+  background-color: var(--orange);
+  color: var(--white);
   font-size: 1.8rem;
   border: none;
 }
 
 .popup-form::placeholder {
-  color: white;
+  color: var(--white);
 }
 
 .popup-form:focus {
@@ -977,13 +1009,13 @@ footer .row {
   font-weight: 700;
   color: var(--white);
   background-color: var(--black);
-  border: 1px solid var(--grey2);
-  transition: 0.3s;
+  border: 1px solid var(--beige);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .right-content a:hover {
-  background-color: var(--green);
-  border: 1px solid var(--grey2);
+  background-color: var(--orange);
+  border: 1px solid var(--beige);
   color: var(--black);
 }
 
@@ -1094,9 +1126,11 @@ footer .row {
   font-family: 'Poppins', sans-serif;
   width: 20rem;
   padding: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--black);
   appearance: none;
   outline: none;
+  background-color: var(--white);
+  color: var(--black);
 }
 
 form {
@@ -1124,12 +1158,13 @@ form span {
   display: flex;
   align-items: center;
   padding: 3rem 0 5rem 0;
+  justify-content: center;
 }
 
 .pagination span {
   display: inline-block;
   padding: 1rem 1.5rem;
-  border: 1px solid var(--green);
+  border: 1px solid var(--orange);
   font-size: 1.8rem;
   margin-bottom: 2rem;
   cursor: pointer;
@@ -1137,9 +1172,9 @@ form span {
 }
 
 .pagination span:hover {
-  border: 1px solid var(--green);
-  background-color: var(--green);
-  color: #fff;
+  border: 1px solid var(--orange);
+  background-color: var(--orange);
+  color: var(--white);
 }
 
 /* Cart Items */
@@ -1160,8 +1195,8 @@ table {
 th {
   text-align: left;
   padding: 0.5rem;
-  color: #fff;
-  background-color: var(--green);
+  color: var(--white);
+  background-color: var(--orange);
   font-weight: normal;
 }
 
@@ -1173,17 +1208,25 @@ td input {
   width: 5rem;
   height: 3rem;
   padding: 0.5rem;
+  border: 1px solid var(--black);
+  border-radius: 0.5rem;
 }
 
 td a {
-  color: orangered;
+  color: var(--orange);
   font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+
+td a:hover {
+  color: var(--black);
 }
 
 td img {
   width: 8rem;
   height: 8rem;
   margin-right: 1rem;
+  object-fit: cover;
 }
 
 .total-price {
@@ -1194,7 +1237,7 @@ td img {
 }
 
 .total-price table {
-  border-top: 3px solid var(--green);
+  border-top: 3px solid var(--orange);
   width: 100%;
   max-width: 35rem;
 }
@@ -1209,10 +1252,18 @@ th:last-child {
 
 .checkout {
   display: inline-block;
-  background-color: var(--green);
-  color: white;
-  padding: 1rem;
+  background-color: var(--orange);
+  color: var(--white);
+  padding: 1rem 2rem;
   margin-top: 1rem;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.checkout:hover {
+  background-color: var(--black);
+  color: var(--white);
 }
 
 @media only screen and (max-width: 567px) {
@@ -1235,7 +1286,7 @@ th:last-child {
 
 .product-detail .left .main {
   text-align: center;
-  background-color: #f6f2f1;
+  background-color: var(--beige);
   margin-bottom: 2rem;
   height: 45rem;
 }
@@ -1250,18 +1301,20 @@ th:last-child {
   display: inline-block;
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  color: var(--black);
 }
 
 .product-detail .right h1 {
   font-size: 4rem;
   line-height: 1.2;
   margin-bottom: 2rem;
+  color: var(--black);
 }
 
 .product-detail .right .price {
-  font-size: 600;
+  font-weight: 600;
   font-size: 2rem;
-  color: var(--green);
+  color: var(--orange);
   margin-bottom: 2rem;
 }
 
@@ -1275,9 +1328,11 @@ th:last-child {
   font-family: 'Poppins', sans-serif;
   width: 20rem;
   padding: 0.7rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--black);
   appearance: none;
   outline: none;
+  background-color: var(--white);
+  color: var(--black);
 }
 
 .product-detail form {
@@ -1303,18 +1358,31 @@ th:last-child {
   text-align: center;
   width: 3.5rem;
   margin-right: 2rem;
+  border: 1px solid var(--black);
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  color: var(--black);
 }
 
 .product-detail .form .addCart {
-  background: var(--green);
+  background: var(--orange);
   padding: 0.8rem 4rem;
-  color: #fff;
+  color: var(--white);
   border-radius: 3rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-detail .form .addCart:hover {
+  background: var(--black);
+  color: var(--white);
 }
 
 .product-detail h3 {
   text-transform: uppercase;
   margin-bottom: 2rem;
+  color: var(--black);
 }
 
 @media only screen and (max-width: 996px) {
@@ -1361,28 +1429,34 @@ th:last-child {
 
 .login-form form h1 {
   margin-bottom: 1rem;
+  color: var(--black);
 }
+
 .login-form form p {
   margin-bottom: 2rem;
+  color: var(--black);
 }
 
 .login-form form label {
   margin-bottom: 1rem;
+  color: var(--black);
 }
 
 .login-form form input {
-  border: 1px solid #ccc;
+  border: 1px solid var(--black);
   outline: none;
   padding: 1.5rem 0;
   text-indent: 1rem;
   font-size: 1.6rem;
   margin-bottom: 2rem;
   border-radius: 0.5rem;
+  background-color: var(--white);
+  color: var(--black);
 }
 
 .login-form form input::placeholder {
   font-size: 1.6rem;
-  color: #222;
+  color: var(--black);
 }
 
 .login-form form .buttons {
@@ -1395,11 +1469,154 @@ th:last-child {
   font-size: 1.6rem;
   padding: 1rem 3rem;
   margin-right: 1.5rem;
-  background-color: var(--green);
-  color: white;
+  background-color: var(--orange);
+  color: var(--white);
   cursor: pointer;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.login-form form button:hover {
+  background-color: var(--black);
+  color: var(--white);
 }
 
 .login-form form p a {
-  color: dodgerblue;
+  color: var(--orange);
+  text-decoration: underline;
+}
+
+
+/* Logout Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; 
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: var(--beige);
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid var(--orange);
+  width: 30%; /* Could be more or less, depending on screen size */
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-button {
+  color: var(--black);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: var(--orange);
+  text-decoration: none;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cancel-btn {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.cancel-btn:hover {
+  background-color: #943800; /* Darker shade of orange */
+}
+
+.logout-btn {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.logout-btn:hover {
+  background-color: #333333; /* Darker shade of black */
+}
+
+
+/* Specific styles for #admin-header */
+#admin-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#admin-header .welcome {
+  display: flex;
+  align-items: center;
+}
+
+#admin-header .welcome a {
+  text-decoration: none;
+  font-size: 16px;
+}
+
+#admin-header .nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+#admin-header .nav-links li {
+  margin: 0 10px;
+}
+
+#admin-header .nav-links a {
+  text-decoration: none;
+}
+
+
+/* Admin Dashboard Styles */
+
+/* Navigation */
+.navigation .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--black);
+}
+
+/* Main Admin Section */
+.main-admin {
+  background-color: var(--beige);
+}
+
+/* Active Navigation Link */
+.nav-link.active {
+  color: var(--orange);
+  font-weight: bold;
+}
+
+/* Error Message Styles */
+.error-message {
+  color: red;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+  display: none; /* Hidden by default */
 }

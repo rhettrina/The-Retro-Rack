@@ -1,0 +1,155 @@
+/* Users Table */
+.users-table {
+    margin-top: 4rem;
+}
+
+.users-table h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: var(--black);
+}
+
+.users-table .add-user-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--orange);
+    color: var(--white);
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    font-size: 1.6rem;
+}
+
+.users-table .add-user-btn i {
+    margin-right: 0.5rem;
+}
+
+.users-table .add-user-btn:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.users-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table table thead {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.users-table table th,
+.users-table table td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.6rem;
+}
+
+.users-table table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.users-table .btn {
+    background-color: transparent;
+    color: var(--black);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    font-size: 1.6rem;
+}
+
+.users-table .btn.edit-btn {
+    color: #4CAF50; /* Green */
+}
+
+.users-table .btn.delete-btn {
+    color: #f44336; /* Red */
+}
+
+.users-table .btn:hover {
+    background-color: #e0e0e0;
+}
+
+.users-table .btn:focus {
+    outline: none;
+}
+
+/* Active Navigation Link */
+.nav-link.active {
+    color: var(--orange);
+    font-weight: bold;
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+    .users-table table thead {
+        display: none;
+    }
+
+    .users-table table, 
+    .users-table table tbody, 
+    .users-table table tr, 
+    .users-table table td {
+        display: block;
+        width: 100%;
+    }
+
+    .users-table table tr {
+        margin-bottom: 1rem;
+    }
+
+    .users-table table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .users-table table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 1rem;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .users-table .add-user-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Action Buttons */
+.btn-action {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    color: var(--white);
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    margin-right: 0.5rem;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-action.edit {
+    background-color: green;
+}
+
+.btn-action.delete {
+    background-color: red;
+}
+
+.btn-action:hover {
+    opacity: 0.8;
+}
+
+/* Align Actions Column Vertically */
+.users-table td {
+    vertical-align: middle;
+}

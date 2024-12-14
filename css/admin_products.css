@@ -1,0 +1,250 @@
+
+
+/* Admin Products Page Styles */
+
+/* Main Admin Section */
+.main-admin {
+    background-color: var(--beige);
+    padding: 2rem 0;
+}
+
+/* Title and Add Button */
+.title {
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.title h1 {
+    font-size: 3rem;
+    color: var(--black);
+}
+
+.title .btn {
+    padding: 1rem 2rem;
+    background-color: var(--orange);
+    color: var(--white);
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.title .btn:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+/* Products Table */
+.admin-products table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-products table thead {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.admin-products table th,
+.admin-products table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.admin-products table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.admin-products table td img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 1rem;
+    border-radius: 0.5rem;
+}
+
+.d-flex.align-center {
+    display: flex;
+    align-items: center;
+}
+
+.btn-action {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    color: var(--white);
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    margin-right: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-action.edit {
+    background-color: green;
+}
+
+.btn-action.delete {
+    background-color: red;
+}
+
+.btn-action:hover {
+    opacity: 0.8;
+}
+
+
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    .title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .title h1 {
+        margin-bottom: 1rem;
+    }
+
+    .admin-products table thead {
+        display: none;
+    }
+
+    .admin-products table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .admin-products table tbody tr td {
+        display: block;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .admin-products table tbody tr td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 1rem;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .admin-products table tbody tr td:last-child {
+        text-align: center;
+    }
+
+    .btn-action {
+        margin-top: 0.5rem;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); /* Black overlay */
+  }
+  
+  .modal-content {
+    background-color: var(--beige);
+    margin: 5% auto; /* Slightly closer to the top */
+    padding: 2rem;
+    border: 1px solid var(--orange);
+    width: 60%; /* Adjust as needed */
+    border-radius: 8px;
+    position: relative;
+  }
+  
+  .close-button {
+    color: var(--black);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    color: var(--orange);
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 2rem;
+    color: var(--black);
+    text-align: center;
+  }
+  
+  .modal-content form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--black);
+  }
+  
+  .modal-content form input[type="text"],
+  .modal-content form input[type="number"],
+  .modal-content form input[type="file"],
+  .modal-content form select,
+  .modal-content form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    background-color: var(--white);
+    color: var(--black);
+  }
+  
+  .modal-content form button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+  
+  .modal-content form button:hover {
+    background-color: var(--black);
+    color: var(--white);
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .modal-content {
+      width: 90%;
+    }
+  }
+
+  /* Message Modal Styles */
+#messageModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+#messageModal .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+

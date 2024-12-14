@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
     <!-- Custom StyleSheet -->
     <link rel="stylesheet" href="./css/styles.css" />
-    <title>ecommerce Website</title>
+    <title>Ecommerce Website</title>
   </head>
   <body>
     <!-- Header -->
@@ -57,8 +57,8 @@
             <a href="login.html" class="icon">
               <i class="bx bx-user"></i>
             </a>
-            <a href="logout.php" class="icon">
-              <i class="bx bx-search"></i>
+            <a href="logout.php" class="icon" id="logoutIcon">
+              <i class="bx bx-log-out"></i>
             </a>
             <div class="icon" >
               <i class="bx bx-heart"></i>
@@ -435,6 +435,73 @@
       </div>
     </footer>
 
+    <!-- Logout Confirmation Modal -->
+<div id="logoutModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Confirm Logout</h2>
+    <p>Are you sure you want to logout?</p>
+    <div class="modal-buttons">
+      <button id="cancelBtn" class="btn cancel-btn">Cancel</button>
+      <button id="logoutBtn" class="btn logout-btn">Logout</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Get modal element
+  const modal = document.getElementById("logoutModal");
+
+  // Get the logout icon/link by its ID
+  const logoutLink = document.getElementById("logoutIcon");
+
+  // Get the close button (X)
+  const closeButton = document.querySelector(".close-button");
+
+  // Get the Cancel and Logout buttons inside the modal
+  const cancelBtn = document.getElementById("cancelBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  // Function to open the modal
+  function openModal(event) {
+    event.preventDefault(); // Prevent the default logout action
+    modal.style.display = "block";
+  }
+
+  // Function to close the modal
+  function closeModal() {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks on the logout link/icon, open the modal
+  if (logoutLink) {
+    logoutLink.addEventListener("click", openModal);
+  }
+
+  // When the user clicks on the close button (X), close the modal
+  if (closeButton) {
+    closeButton.addEventListener("click", closeModal);
+  }
+
+  // When the user clicks on the Cancel button, close the modal
+  if (cancelBtn) {
+    cancelBtn.addEventListener("click", closeModal);
+  }
+
+  // When the user clicks on the Logout button, proceed with logout
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", function() {
+      window.location.href = "logout.php";
+    });
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.addEventListener("click", function(event) {
+    if (event.target == modal) {
+      closeModal();
+    }
+  });
+</script>
 
   <!-- PopUp -->
   <div class="popup hide-popup">

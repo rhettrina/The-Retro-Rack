@@ -24,6 +24,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
     <!-- Custom StyleSheet -->
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/index.css">
     <title>ecommerce Website</title>
 </head>
 
@@ -33,18 +34,98 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <!-- Top Nav -->
         <div class="top-nav">
             <div class="container d-flex">
-                <p>Order Online Or Call Us:(+91) 8081886430,7376550891</p>
+                <p>Order Online Or Call Us:(+63) 9073434119</p>
                 <ul class="d-flex">
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">FAQ</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="admin_dashboard.php" id="adminLink">Admin</a></li>
                 </ul>
             </div>
         </div>
+
+        <!-- Admin Login Modal -->
+        <div id="adminLoginModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Admin Login</h2>
+
+                <!-- Error message container -->
+                <div id="loginError" class="error-message"></div>
+
+                <form id="adminLoginForm" method="post">
+                    <div class="form-group">
+                        <label for="admin-username">Username:</label>
+                        <input type="text" id="admin-username" name="username" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-password">Password:</label>
+                        <input type="password" id="admin-password" name="password" class="form-input" required>
+                    </div>
+                    <button type="submit" class="btn logout-btn">Login</button>
+                </form>
+            </div>
+        </div>
+        <script>
+            // Existing modal behavior code
+            var modal = document.getElementById('adminLoginModal');
+            var btn = document.getElementById('adminLink');
+            var span = document.getElementsByClassName('close-button')[0];
+
+            // Open modal when "Admin" link is clicked
+            btn.onclick = function (event) {
+                event.preventDefault(); // Prevent default action
+                modal.style.display = 'block';
+            }
+
+            // Close modal when "x" is clicked
+            span.onclick = function () {
+                modal.style.display = 'none';
+            }
+
+            // Close modal when clicking outside of it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+
+            // Handle form submission via AJAX
+            var loginForm = document.getElementById('adminLoginForm');
+            loginForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Get form data
+                var formData = new FormData(loginForm);
+
+                // Send AJAX request
+                fetch('admin_login.php', {
+                    method: 'POST',
+                    body: formData,
+                })
+                    .then(function (response) {
+                        return response.json(); // Parse JSON response
+                    })
+                    .then(function (data) {
+                        if (data.success) {
+                            // Redirect to admin dashboard
+                            window.location.href = 'admin_dashboard.php';
+                        } else {
+                            // Display error message
+                            var loginError = document.getElementById('loginError');
+                            loginError.textContent = data.error;
+                            loginError.style.display = 'block';
+                        }
+                    })
+                    .catch(function (error) {
+                        console.error('Error:', error);
+                    });
+            });
+        </script>
+
         <div class="navigation">
             <div class="nav-center container d-flex">
                 <a href="index.html" class="logo">
-                    <h1>The Mart</h1>
+                    <h1>The Retro Rack</h1>
                 </a>
 
                 <ul class="nav-list d-flex">
@@ -83,7 +164,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         <i class="bx bx-cart"></i>
                         <span class="d-flex">0</span>
                     </a>
-                    <a href="logout.php" class="icon">
+                    <a href="logout.php" class="icon" id="logoutIcon">
                         <i class="bx bx-log-out"></i>
                     </a>
                 </div>
@@ -454,30 +535,73 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     </footer>
 
 
-    <!-- PopUp -->
-    <div class="popup hide-popup">
-        <div class="popup-content">
-            <div class="popup-close">
-                <i class='bx bx-x'></i>
-            </div>
-            <div class="popup-left">
-                <div class="popup-img-container">
-                    <img class="popup-img" src="./images/popup.jpg" alt="popup">
-                </div>
-            </div>
-            <div class="popup-right">
-                <div class="right-content">
-                    <h1>Get Discount <span>50%</span> Off</h1>
-                    <p>Sign up to our newsletter and save 30% for you next purchase. No spam, we promise!
-                    </p>
-                    <form action="#">
-                        <input type="email" placeholder="Enter your email..." class="popup-form">
-                        <a href="#">Subscribe</a>
-                    </form>
-                </div>
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Confirm Logout</h2>
+            <p>Are you sure you want to logout?</p>
+            <div class="modal-buttons">
+                <button id="cancelBtn" class="btn cancel-btn">Cancel</button>
+                <button id="logoutBtn" class="btn logout-btn">Logout</button>
             </div>
         </div>
     </div>
+
+    <script>
+        // Get modal element
+        const modal = document.getElementById("logoutModal");
+
+        // Get the logout icon/link by its ID
+        const logoutLink = document.getElementById("logoutIcon");
+
+        // Get the close button (X)
+        const closeButton = document.querySelector(".close-button");
+
+        // Get the Cancel and Logout buttons inside the modal
+        const cancelBtn = document.getElementById("cancelBtn");
+        const logoutBtn = document.getElementById("logoutBtn");
+
+        // Function to open the modal
+        function openModal(event) {
+            event.preventDefault(); // Prevent the default logout action
+            modal.style.display = "block";
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks on the logout link/icon, open the modal
+        if (logoutLink) {
+            logoutLink.addEventListener("click", openModal);
+        }
+
+        // When the user clicks on the close button (X), close the modal
+        if (closeButton) {
+            closeButton.addEventListener("click", closeModal);
+        }
+
+        // When the user clicks on the Cancel button, close the modal
+        if (cancelBtn) {
+            cancelBtn.addEventListener("click", closeModal);
+        }
+
+        // When the user clicks on the Logout button, proceed with logout
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", function () {
+                window.location.href = "logout.php";
+            });
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.addEventListener("click", function (event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        });
+    </script>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>

@@ -1,4 +1,36 @@
-h1{display: block; text-align: center;font-size: 100px; color: aliceblue; font-style: italic; font-weight: bold; background-color: rgb(92, 5, 80);}
-p{display:block;font-size: medium;line-height: 150%;}
-aaaa{background-color: rgb(247, 247, 247);}
-p1{display: block;background-color: rgb(191, 66, 143);font-size: 25px;font-weight: bold;line-height: 150%;color: aliceblue;}
+/* Color Variables */
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --orange: #85471e;
+    --beige: #F5E4C3;
+  }
+  
+  h1 {
+    display: block;
+    text-align: center;
+    font-size: 100px;
+    color: var(--white);
+    font-style: italic;
+    font-weight: bold;
+    background-color: var(--orange);
+  }
+  
+  p {
+    display: block;
+    font-size: medium;
+    line-height: 150%;
+  }
+  
+  aaaa {
+    background-color: var(--beige);
+  }
+  
+  p1 {
+    display: block;
+    background-color: var(--orange);
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 150%;
+    color: var(--white);
+  }

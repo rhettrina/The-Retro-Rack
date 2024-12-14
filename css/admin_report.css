@@ -1,0 +1,105 @@
+/* Reports Page Styles */
+
+/* Report Cards */
+.report-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+}
+
+.report-card {
+    flex: 1;
+    min-width: 15rem;
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 1rem;
+}
+
+.report-card .icon {
+    font-size: 3rem;
+    color: var(--orange);
+    margin-bottom: 1rem;
+}
+
+.report-card-info h3 {
+    font-size: 2rem;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+}
+
+.report-card-info span {
+    font-size: 2.2rem;
+    color: var(--orange);
+    font-weight: bold;
+}
+
+/* Sales Chart */
+.sales-chart {
+    margin-bottom: 4rem;
+}
+
+.sales-chart h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: var(--black);
+}
+
+.sales-chart canvas {
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+}
+
+/* Recent Sales Table */
+.recent-sales {
+    margin-bottom: 4rem;
+}
+
+.recent-sales h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: var(--black);
+}
+
+.recent-sales table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.recent-sales table thead {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.recent-sales table th,
+.recent-sales table td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.recent-sales table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+    .report-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .report-card {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .sales-chart canvas {
+        height: 300px;
+    }
+}
