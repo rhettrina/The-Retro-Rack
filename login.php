@@ -3,6 +3,8 @@ session_start();
 
 require_once "config.php";
 
+
+
 // Initialize variables
 $login = $password = "";
 $error = "";

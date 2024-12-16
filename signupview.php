@@ -84,61 +84,16 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <div class="top-nav">
-        <div class="container d-flex">
-            <p>Order Online Or Call Us: (+91) 8081886430,7376550891</p>
-            <ul class="d-flex">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">FAQ</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
+<div class="top-nav">
+    <div class="container d-flex">
+        <p>Order Online Or Call Us:(+63) 9073434119</p>
+        <ul class="d-flex">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="admin_dashboard.php" id="adminLink">Admin</a></li>
+        </ul>
     </div>
-    <div class="navigation">
-        <div class="nav-center container d-flex">
-            <a href="index.html" class="logo"><h1>The Mart</h1></a>
-
-            <ul class="nav-list d-flex">
-                <li class="nav-item">
-                    <a href="index.php" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="product.html" class="nav-link">Shop</a>
-                </li>
-                <li class="nav-item">
-                    <a href="terms.xml" class="nav-link">Terms</a>
-                </li>
-                <li class="nav-item">
-                    <a href="about.html" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link">Contact</a>
-                </li>
-            </ul>
-
-            <div class="icons d-flex">
-                <a href="login.html" class="icon">
-                    <i class="bx bx-user"></i>
-                </a>
-                <a href="search.html" class="icon">
-                    <i class="bx bx-search"></i>
-                </a>
-                <div class="icon">
-                    <i class="bx bx-heart"></i>
-                    <span class="d-flex">0</span>
-                </div>
-                <a href="cart.html" class="icon">
-                    <i class="bx bx-cart"></i>
-                    <span class="d-flex">0</span>
-                </a>
-            </div>
-
-            <div class="hamburger">
-                <i class="bx bx-menu-alt-left"></i>
-            </div>
-        </div>
-    </div>
+</div>
 
     <!-- Sign Up Form -->
     <div class="container">
@@ -147,7 +102,7 @@
                 <h1>Sign Up</h1>
                 <p>
                     Please fill in this form to create an account, or
-                    <a href="login.html">Login</a> 
+                    <a href="loginview.php">Login</a> 
                 </p>
         
                 <!-- Full Name -->
@@ -339,7 +294,7 @@
                     modalMessage.textContent = "Sign-up successful! Redirecting to login page...";
                     // Redirect after 2 seconds
                     setTimeout(() => {
-                        window.location.href = 'login.html';
+                        window.location.href = 'login.php';
                     }, 2000);
                 } else {
                     // Display validation errors

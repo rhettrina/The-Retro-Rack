@@ -1,11 +1,6 @@
 <?php
-
 session_start();
-
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: login.html");
-}
-
+include 'config.php'; // Ensure this path correctly points to your config file
 ?>
 
 
@@ -31,149 +26,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 <body>
     <!-- Header -->
     <header class="header" id="header">
-        <!-- Top Nav -->
-        <div class="top-nav">
-            <div class="container d-flex">
-                <p>Order Online Or Call Us:(+63) 9073434119</p>
-                <ul class="d-flex">
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="admin_dashboard.php" id="adminLink">Admin</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Admin Login Modal -->
-        <div id="adminLoginModal" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <h2>Admin Login</h2>
-
-                <!-- Error message container -->
-                <div id="loginError" class="error-message"></div>
-
-                <form id="adminLoginForm" method="post">
-                    <div class="form-group">
-                        <label for="admin-username">Username:</label>
-                        <input type="text" id="admin-username" name="username" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="admin-password">Password:</label>
-                        <input type="password" id="admin-password" name="password" class="form-input" required>
-                    </div>
-                    <button type="submit" class="btn logout-btn">Login</button>
-                </form>
-            </div>
-        </div>
-        <script>
-            // Existing modal behavior code
-            var modal = document.getElementById('adminLoginModal');
-            var btn = document.getElementById('adminLink');
-            var span = document.getElementsByClassName('close-button')[0];
-
-            // Open modal when "Admin" link is clicked
-            btn.onclick = function (event) {
-                event.preventDefault(); // Prevent default action
-                modal.style.display = 'block';
-            }
-
-            // Close modal when "x" is clicked
-            span.onclick = function () {
-                modal.style.display = 'none';
-            }
-
-            // Close modal when clicking outside of it
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-            }
-
-            // Handle form submission via AJAX
-            var loginForm = document.getElementById('adminLoginForm');
-            loginForm.addEventListener('submit', function (event) {
-                event.preventDefault(); // Prevent default form submission
-
-                // Get form data
-                var formData = new FormData(loginForm);
-
-                // Send AJAX request
-                fetch('admin_login.php', {
-                    method: 'POST',
-                    body: formData,
-                })
-                    .then(function (response) {
-                        return response.json(); // Parse JSON response
-                    })
-                    .then(function (data) {
-                        if (data.success) {
-                            // Redirect to admin dashboard
-                            window.location.href = 'admin_dashboard.php';
-                        } else {
-                            // Display error message
-                            var loginError = document.getElementById('loginError');
-                            loginError.textContent = data.error;
-                            loginError.style.display = 'block';
-                        }
-                    })
-                    .catch(function (error) {
-                        console.error('Error:', error);
-                    });
-            });
-        </script>
-
-        <div class="navigation">
-            <div class="nav-center container d-flex">
-                <a href="index.html" class="logo">
-                    <h1>The Retro Rack</h1>
-                </a>
-
-                <ul class="nav-list d-flex">
-                    <li class="nav-item">
-                        <a href="index.php" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="product.html" class="nav-link">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="terms.xml" class="nav-link">Terms</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="about.html" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="contact.html" class="nav-link">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link"><?php echo "Welcome " . $_SESSION['username'] ?></a>
-                    </li>
-                </ul>
-
-                <div class="icons d-flex">
-                    <a href="login.html" class="icon">
-                        <i class="bx bx-user"></i>
-                    </a>
-                    <a href="search.html" class="icon">
-                        <i class="bx bx-search"></i>
-                    </a>
-                    <div class="icon">
-                        <i class="bx bx-heart"></i>
-                        <span class="d-flex">0</span>
-                    </div>
-                    <a href="cart.html" class="icon">
-                        <i class="bx bx-cart"></i>
-                        <span class="d-flex">0</span>
-                    </a>
-                    <a href="logout.php" class="icon" id="logoutIcon">
-                        <i class="bx bx-log-out"></i>
-                    </a>
-                </div>
-
-                <div class="hamburger">
-                    <i class="bx bx-menu-alt-left"></i>
-                </div>
-            </div>
-        </div>
+        
+    <?php include 'visitorheader.php'; ?>
 
         <div class="hero">
             <div class="glide" id="glide_1">
@@ -507,32 +361,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="row">
-            <div class="col d-flex">
-                <h4>INFORMATION</h4>
-                <a href="about.html">About us</a>
-                <a href="contact.html">Contact Us</a>
-                <a href="">Term & Conditions</a>
-                <a href="">Shipping Guide</a>
-            </div>
-            <div class="col d-flex">
-                <h4>USEFUL LINK</h4>
-                <a href="">Online Store</a>
-                <a href="">Customer Services</a>
-                <a href="">Promotion</a>
-                <a href="">Top Brands</a>
-            </div>
-            <div class="col d-flex">
-                <span><i class='bx bxl-facebook-square'></i></span>
-                <span><i class='bx bxl-instagram-alt'></i></span>
-                <span><i class='bx bxl-github'></i></span>
-                <span><i class='bx bxl-twitter'></i></span>
-                <span><i class='bx bxl-pinterest'></i></span>
-            </div>
-        </div>
-    </footer>
+    <?php include 'visitorfooter.php'; ?>
 
 
     <!-- Logout Confirmation Modal -->
