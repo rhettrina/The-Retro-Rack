@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,24 +24,33 @@
 
         /* Modal Styles */
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1000; /* Sit on top */
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1000;
+            /* Sit on top */
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: hidden; /* Disable scroll */
-            background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: hidden;
+            /* Disable scroll */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Black with opacity */
         }
 
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
+            margin: 15% auto;
+            /* 15% from the top and centered */
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
-            max-width: 500px; /* Could be more or less, depending on screen size */
+            max-width: 500px;
+            /* Could be more or less, depending on screen size */
             position: relative;
         }
 
@@ -67,9 +77,17 @@
         }
 
         @keyframes loading {
-            0% { width: 0%; }
-            50% { width: 50%; }
-            100% { width: 100%; }
+            0% {
+                width: 0%;
+            }
+
+            50% {
+                width: 50%;
+            }
+
+            100% {
+                width: 100%;
+            }
         }
 
         /* Success Message Styling */
@@ -79,21 +97,20 @@
             font-size: 1.2em;
             text-align: center;
         }
-
-        
     </style>
 </head>
+
 <body>
-<div class="top-nav">
-    <div class="container d-flex">
-        <p>Order Online Or Call Us:(+63) 9073434119</p>
-        <ul class="d-flex">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="admin_dashboard.php" id="adminLink">Admin</a></li>
-        </ul>
+    <div class="top-nav">
+        <div class="container d-flex">
+            <p>Order Online Or Call Us:(+63) 9073434119</p>
+            <ul class="d-flex">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin_dashboard.php" id="adminLink">Admin</a></li>
+            </ul>
+        </div>
     </div>
-</div>
 
     <!-- Sign Up Form -->
     <div class="container">
@@ -102,34 +119,34 @@
                 <h1>Sign Up</h1>
                 <p>
                     Please fill in this form to create an account, or
-                    <a href="loginview.php">Login</a> 
+                    <a href="loginview.php">Login</a>
                 </p>
-        
+
                 <!-- Full Name -->
-                
+
                 <label for="fullname">Full Name</label>
                 <div class="error" id="fullname_error"></div>
                 <input type="text" placeholder="Enter Full Name" name="fullname" id="fullname" required />
-                
-        
+
+
                 <!-- Username -->
                 <label for="username">Username</label>
                 <div class="error" id="username_error"></div>
                 <input type="text" placeholder="Enter Username" name="username" id="username" required />
-                
-        
+
+
                 <!-- Email -->
                 <label for="email">Email</label>
                 <div class="error" id="email_error"></div>
                 <input type="email" placeholder="Enter Email" name="email" id="email" required />
-                
-        
+
+
                 <!-- Phone Number -->
                 <label for="phone">Phone Number</label>
                 <div class="error" id="phone_error"></div>
                 <input type="tel" placeholder="Enter Phone Number" name="phone" id="phone" required />
-                
-        
+
+
                 <!-- Gender -->
                 <label for="gender">Gender</label>
                 <div class="error" id="gender_error"></div>
@@ -147,54 +164,38 @@
                         Other
                     </label>
                 </div>
-                
-        
+
+
                 <!-- Date of Birth -->
                 <label for="dob">Date of Birth</label>
                 <div class="error" id="dob_error"></div>
                 <input type="date" name="dob" id="dob" required />
-                
-        
+
+
                 <!-- Password -->
                 <label for="psw">Password</label>
                 <div class="error" id="password_error"></div>
-                <input
-                    type="password"
-                    placeholder="Enter Password"
-                    name="password"
-                    id="password"
-                    required
-                />
-                
-        
+                <input type="password" placeholder="Enter Password" name="password" id="password" required />
+
+
                 <!-- Confirm Password -->
                 <label for="psw-repeat">Repeat Password</label>
                 <div class="error" id="confirm_password_error"></div>
-                <input
-                    type="password"
-                    placeholder="Repeat Password"
-                    name="confirm_password"
-                    id="confirm_password"
-                    required
-                />
-                
-        
+                <input type="password" placeholder="Repeat Password" name="confirm_password" id="confirm_password"
+                    required />
+
+
                 <!-- Remember Me -->
                 <label>
-                    <input
-                        type="checkbox"
-                        checked="checked"
-                        name="remember"
-                        style="margin-bottom: 15px"
-                    />
+                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom: 15px" />
                     Remember me
                 </label>
-        
+
                 <p>
                     By creating an account you agree to our
                     <a href="terms.xml">Terms & Privacy</a>.
                 </p>
-        
+
                 <!-- Buttons -->
                 <div class="buttons">
                     <button type="button" class="cancelbtn">Cancel</button>
@@ -264,7 +265,7 @@
         // Form Submission via AJAX
         const signupForm = document.getElementById("signupForm");
 
-        signupForm.addEventListener("submit", function(event) {
+        signupForm.addEventListener("submit", function (event) {
             event.preventDefault(); // Prevent default form submission
 
             // Clear previous errors
@@ -284,47 +285,48 @@
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                // Hide loading bar
-                loadingBar.style.display = "none";
+                .then(response => response.json())
+                .then(data => {
+                    // Hide loading bar
+                    loadingBar.style.display = "none";
 
-                if (data.success) {
-                    // Show success message
-                    modalMessage.textContent = "Sign-up successful! Redirecting to login page...";
-                    // Redirect after 2 seconds
-                    setTimeout(() => {
-                        window.location.href = 'login.php';
-                    }, 2000);
-                } else {
-                    // Display validation errors
-                    for (let field in data.errors) {
-                        const errorDiv = document.getElementById(`${field}_error`);
-                        const inputField = document.getElementById(field);
-                        if (errorDiv && data.errors[field]) {
-                            errorDiv.textContent = data.errors[field];
-                            if (inputField) {
-                                inputField.classList.add('input-error');
+                    if (data.success) {
+                        // Show success message
+                        modalMessage.textContent = "Sign-up successful! Redirecting to login page...";
+                        // Redirect after 2 seconds
+                        setTimeout(() => {
+                            window.location.href = 'loginview.php';
+                        }, 2000);
+                    } else {
+                        // Display validation errors
+                        for (let field in data.errors) {
+                            const errorDiv = document.getElementById(`${field}_error`);
+                            const inputField = document.getElementById(field);
+                            if (errorDiv && data.errors[field]) {
+                                errorDiv.textContent = data.errors[field];
+                                if (inputField) {
+                                    inputField.classList.add('input-error');
+                                }
                             }
                         }
+                        // Optionally, update modal message
+                        modalMessage.textContent = "Please correct the errors highlighted below.";
                     }
-                    // Optionally, update modal message
-                    modalMessage.textContent = "Please correct the errors highlighted below.";
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                loadingBar.style.display = "none";
-                modalMessage.textContent = "An unexpected error occurred. Please try again later.";
-            });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    loadingBar.style.display = "none";
+                    modalMessage.textContent = "An unexpected error occurred. Please try again later.";
+                });
         });
 
         // Cancel Button Functionality
-        document.querySelector('.cancelbtn').addEventListener('click', function() {
+        document.querySelector('.cancelbtn').addEventListener('click', function () {
             signupForm.reset();
             document.querySelectorAll('.error').forEach(el => el.textContent = '');
             document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
         });
     </script>
 </body>
+
 </html>

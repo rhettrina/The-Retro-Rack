@@ -58,59 +58,59 @@ if (!isset($_SESSION['admin_id'])) {
             </ul>
         </div>
 
-        
+
     </header>
 
 
     <!-- Logout Confirmation Modal -->
     <div id="logoutModal" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <h2>Confirm Logout</h2>
-                <p>Are you sure you want to log out?</p>
-                <div class="modal-buttons">
-                    <button id="cancelLogout" class="btn cancel-btn">Cancel</button>
-                    <a href="admin_logout.php" id="confirmLogout" class="btn logout-btn">Logout</a>
-                </div>
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Confirm Logout</h2>
+            <p>Are you sure you want to log out?</p>
+            <div class="modal-buttons">
+                <button id="cancelLogout" class="btn cancel-btn">Cancel</button>
+                <a href="admin_logout.php" id="confirmLogout" class="btn logout-btn">Logout</a>
             </div>
         </div>
+    </div>
 
-        <script>
-            // Get the modal element
-            var logoutModal = document.getElementById('logoutModal');
+    <script>
+        // Get the modal element
+        var logoutModal = document.getElementById('logoutModal');
 
-            // Get the link that opens the modal
-            var logoutLink = document.getElementById('logoutLink');
+        // Get the link that opens the modal
+        var logoutLink = document.getElementById('logoutLink');
 
-            // Get the <span> element that closes the modal
-            var closeBtn = document.querySelector('#logoutModal .close-button');
+        // Get the <span> element that closes the modal
+        var closeBtn = document.querySelector('#logoutModal .close-button');
 
-            // Get the cancel button
-            var cancelBtn = document.getElementById('cancelLogout');
+        // Get the cancel button
+        var cancelBtn = document.getElementById('cancelLogout');
 
-            // When the user clicks the "Logout" link, open the modal
-            logoutLink.addEventListener('click', function (event) {
-                event.preventDefault(); // Prevent default link behavior
-                logoutModal.style.display = 'block';
-            });
+        // When the user clicks the "Logout" link, open the modal
+        logoutLink.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent default link behavior
+            logoutModal.style.display = 'block';
+        });
 
-            // When the user clicks on <span> (x), close the modal
-            closeBtn.addEventListener('click', function () {
+        // When the user clicks on <span> (x), close the modal
+        closeBtn.addEventListener('click', function () {
+            logoutModal.style.display = 'none';
+        });
+
+        // When the user clicks on the "Cancel" button, close the modal
+        cancelBtn.addEventListener('click', function () {
+            logoutModal.style.display = 'none';
+        });
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.addEventListener('click', function (event) {
+            if (event.target == logoutModal) {
                 logoutModal.style.display = 'none';
-            });
-
-            // When the user clicks on the "Cancel" button, close the modal
-            cancelBtn.addEventListener('click', function () {
-                logoutModal.style.display = 'none';
-            });
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.addEventListener('click', function (event) {
-                if (event.target == logoutModal) {
-                    logoutModal.style.display = 'none';
-                }
-            });
-        </script>
+            }
+        });
+    </script>
 
 
     <!-- Navigation Bar -->
@@ -125,7 +125,7 @@ if (!isset($_SESSION['admin_id'])) {
                     <a href="admin_products.php" class="nav-link">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a href="admin_orders.html" class="nav-link">Orders</a>
+                    <a href="admin_orders.php" class="nav-link">Orders</a>
                 </li>
                 <li class="nav-item">
                     <a href="admin_users.php" class="nav-link">Users</a>

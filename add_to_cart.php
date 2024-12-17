@@ -19,12 +19,12 @@ if (isset($_SESSION['id'])) {
     exit();
 }
 
-if (isset($_GET['product_id']) && is_numeric($_GET['product_id'])) {
-    $product_id = (int)$_GET['product_id'];
+if (isset($_POST['product_id']) && is_numeric($_POST['product_id'])) {
+    $product_id = (int) $_POST['product_id'];
 
-    // Get the quantity from GET, default to 1 if not set
-    if (isset($_GET['quantity']) && is_numeric($_GET['quantity']) && $_GET['quantity'] > 0) {
-        $quantity = (int)$_GET['quantity'];
+    // Get the quantity from POST, default to 1 if not set
+    if (isset($_POST['quantity']) && is_numeric($_POST['quantity']) && $_POST['quantity'] > 0) {
+        $quantity = (int) $_POST['quantity'];
     } else {
         $quantity = 1;
     }

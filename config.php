@@ -2,9 +2,9 @@
 
 
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'ecommerce');
+define('DB_USERNAME', 'u143688490_wiz');
+define('DB_PASSWORD', 'Louis@18');
+define('DB_NAME', 'retrorack');
 
 
 $conn = mysqli_connect(
