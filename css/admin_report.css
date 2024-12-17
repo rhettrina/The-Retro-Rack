@@ -103,3 +103,52 @@
         height: 300px;
     }
 }
+
+/* Profit Chart */
+.profit-chart {
+    margin-bottom: 4rem;
+}
+
+.profit-chart h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: var(--black);
+}
+
+.profit-chart canvas {
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+}
+
+/* Top Customers */
+.top-customers {
+    margin-bottom: 4rem;
+}
+
+.top-customers h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: var(--black);
+}
+
+.top-customers table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.top-customers table thead {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.top-customers table th,
+.top-customers table td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.top-customers table tbody tr:hover {
+    background-color: #f9f9f9;
+}

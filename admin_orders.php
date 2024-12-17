@@ -5,12 +5,12 @@ session_start();
 // Include the database configuration file
 require_once 'config.php';
 
-// // Check if the admin is logged in
-// if (!isset($_SESSION['admin_logged_in'])) {
-//     // Redirect to admin login page
-//     header('Location: admin_login.php');
-//     exit();
-// }
+// Check if the admin is logged in
+if (!isset($_SESSION['admin_id'])) {
+    // Redirect to admin login page
+    header('Location: index.php');
+    exit();
+}
 
 // Fetch orders from the database
 $sql = "SELECT 
@@ -33,7 +33,11 @@ if (!$result) {
     die('Error executing query: ' . mysqli_error($conn));
 }
 
+// Define the statuses
+$statuses = ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled', 'Returned'];
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,10 +77,36 @@ if (!$result) {
 
 <body>
     <?php include 'adminheader.php'; ?>
+    <?php
+    // Display Success or Error Messages
+    if (isset($_SESSION['success_message'])) {
+        echo "<div class='success-message'>" . htmlspecialchars($_SESSION['success_message']) . "</div>";
+        unset($_SESSION['success_message']);
+    }
 
+    if (isset($_SESSION['error_message'])) {
+        echo "<div class='error-message'>" . htmlspecialchars($_SESSION['error_message']) . "</div>";
+        unset($_SESSION['error_message']);
+    }
+    ?>
+
+    <!-- Orders Table -->
     <!-- Main Content -->
     <section class="section main-admin">
         <div class="container">
+            <!-- Display Success or Error Messages -->
+            <?php
+            if (isset($_SESSION['success_message'])) {
+                echo "<div class='success-message'>" . htmlspecialchars($_SESSION['success_message']) . "</div>";
+                unset($_SESSION['success_message']);
+            }
+
+            if (isset($_SESSION['error_message'])) {
+                echo "<div class='error-message'>" . htmlspecialchars($_SESSION['error_message']) . "</div>";
+                unset($_SESSION['error_message']);
+            }
+            ?>
+
             <div class="title">
                 <h1>Orders</h1>
             </div>
@@ -98,21 +128,35 @@ if (!$result) {
                         <?php
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
-                                echo "<tr>
-                                    <td data-label='Order ID'>#" . htmlspecialchars($row['order_id']) . "</td>
-                                    <td data-label='User'>" . htmlspecialchars($row['user_name']) . "</td>
-                                    <td data-label='Product'>" . htmlspecialchars($row['products']) . "</td>
-                                    <td data-label='Status'><span class='status " . htmlspecialchars($row['status']) . "'>" . htmlspecialchars($row['status']) . "</span></td>
-                                    <td data-label='Total'>$" . number_format($row['total_amount'], 2) . "</td>
-                                    <td data-label='Date'>" . htmlspecialchars($row['order_date']) . "</td>
-                                </tr>";
+                                ?>
+                                <tr>
+                                    <td data-label="Order ID">#<?php echo htmlspecialchars($row['order_id']); ?></td>
+                                    <td data-label="User"><?php echo htmlspecialchars($row['user_name']); ?></td>
+                                    <td data-label="Product"><?php echo htmlspecialchars($row['products']); ?></td>
+                                    <td data-label="Status">
+                                        <form action="update_order_status.php" method="POST">
+                                            <input type="hidden" name="order_id"
+                                                value="<?php echo htmlspecialchars($row['order_id']); ?>">
+                                            <select name="status" onchange="this.form.submit()">
+                                                <?php
+                                                foreach ($statuses as $status) {
+                                                    $selected = ($status == $row['status']) ? 'selected' : '';
+                                                    echo "<option value='" . htmlspecialchars($status) . "' $selected>" . htmlspecialchars($status) . "</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                        </form>
+                                    </td>
+                                    <td data-label="Total">$<?php echo number_format($row['total_amount'], 2); ?></td>
+                                    <td data-label="Date"><?php echo htmlspecialchars($row['order_date']); ?></td>
+                                </tr>
+                                <?php
                             }
                         } else {
                             echo "<tr><td colspan='6'>No orders found.</td></tr>";
                         }
-                        // Free result set
+                        // Free result set and close database connection
                         mysqli_free_result($result);
-                        // Close the database connection
                         mysqli_close($conn);
                         ?>
                     </tbody>

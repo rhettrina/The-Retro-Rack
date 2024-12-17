@@ -1,126 +1,227 @@
+/* Admin Cards */
+.admin-cards {
+  display: flex;
+  /* Change from grid to flex */
+  flex-direction: row;
+  /* Align items in a row */
+  justify-content: space-between;
+  /* Space items evenly */
+  align-items: stretch;
+  /* Stretch items to have equal height */
+  gap: 2rem;
+  /* Space between cards */
+  margin-bottom: 4rem;
+}
 
-  
-  /* Admin Cards */
+.admin-card {
+  flex: 1;
+  /* Allow cards to grow and shrink equally */
+  min-width: 15rem;
+  /* Set a minimum width to maintain responsiveness */
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 1rem;
+  /* Horizontal margin between cards */
+}
+
+.admin-card .icon {
+  font-size: 3rem;
+  color: var(--orange);
+  margin-bottom: 1rem;
+}
+
+.admin-card-info h3 {
+  font-size: 2rem;
+  color: var(--black);
+  margin-bottom: 0.5rem;
+}
+
+.admin-card-info span {
+  font-size: 2.2rem;
+  color: var(--orange);
+  font-weight: bold;
+}
+
+/* Recent Orders Table */
+.recent-orders {
+  margin-top: 4rem;
+}
+
+.recent-orders h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  color: var(--black);
+}
+
+.recent-orders table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.recent-orders table thead {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.recent-orders table th,
+.recent-orders table td {
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.recent-orders table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.status {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: var(--white);
+  font-size: 1.4rem;
+}
+
+.status.delivered {
+  background-color: green;
+}
+
+.status.pending {
+  background-color: orange;
+}
+
+.status.returned {
+  background-color: red;
+}
+
+.recent-orders .btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  background-color: var(--orange);
+  color: var(--white);
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.recent-orders .btn:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+
+
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
   .admin-cards {
-    display: flex; /* Change from grid to flex */
-    flex-direction: row; /* Align items in a row */
-    justify-content: space-between; /* Space items evenly */
-    align-items: stretch; /* Stretch items to have equal height */
-    gap: 2rem; /* Space between cards */
-    margin-bottom: 4rem;
+    flex-direction: column;
+    /* Stack cards vertically on small screens */
+    align-items: center;
   }
-  
+
   .admin-card {
-    flex: 1; /* Allow cards to grow and shrink equally */
-    min-width: 15rem; /* Set a minimum width to maintain responsiveness */
-    background-color: var(--white);
-    padding: 1.5rem;
-    border-radius: 8px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 0 1rem; /* Horizontal margin between cards */
+    margin: 1rem 0;
+    /* Vertical margin between cards */
+    width: 100%;
   }
-  
-  .admin-card .icon {
-    font-size: 3rem;
-    color: var(--orange);
+}
+
+
+/* Top Products */
+.top-products {
+  margin-bottom: 4rem;
+}
+
+.top-products h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  color: var(--black);
+}
+
+.top-products table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.top-products table thead {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.top-products table th,
+.top-products table td {
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.top-products table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Top Products */
+.top-products {
+  margin: 4rem 2em;
+
+  /* Adjust margin as needed */
+}
+
+.top-products h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  color: var(--black);
+}
+
+.top-products table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.top-products table thead {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.top-products table th,
+.top-products table td {
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.top-products table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+
+  /* Ensure tables are responsive */
+  .top-products table,
+  .top-products thead,
+  .top-products tbody,
+  .top-products th,
+  .top-products td,
+  .top-products tr {
+    display: block;
+  }
+
+  .top-products th,
+  .top-products td {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .top-products tr {
     margin-bottom: 1rem;
   }
-  
-  .admin-card-info h3 {
-    font-size: 2rem;
-    color: var(--black);
-    margin-bottom: 0.5rem;
-  }
-  
-  .admin-card-info span {
-    font-size: 2.2rem;
-    color: var(--orange);
-    font-weight: bold;
-  }
-  /* Recent Orders Table */
-  .recent-orders {
-    margin-top: 4rem;
-  }
-  
-  .recent-orders h2 {
-    font-size: 2.8rem;
-    margin-bottom: 2rem;
-    color: var(--black);
-  }
-  
-  .recent-orders table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .recent-orders table thead {
-    background-color: var(--orange);
-    color: var(--white);
-  }
-  
-  .recent-orders table th,
-  .recent-orders table td {
-    text-align: left;
-    padding: 1rem;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .recent-orders table tbody tr:hover {
-    background-color: #f9f9f9;
-  }
-  
-  .status {
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    color: var(--white);
-    font-size: 1.4rem;
-  }
-  
-  .status.delivered {
-    background-color: green;
-  }
-  
-  .status.pending {
-    background-color: orange;
-  }
-  
-  .status.returned {
-    background-color: red;
-  }
-  
-  .recent-orders .btn {
-    display: inline-block;
-    padding: 1rem 2rem;
-    margin-top: 2rem;
-    background-color: var(--orange);
-    color: var(--white);
-    border-radius: 5px;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
-  }
-  
-  .recent-orders .btn:hover {
-    background-color: var(--black);
-    color: var(--white);
-  }
-  
 
-  
-
-  /* Responsive Adjustments */
-  @media only screen and (max-width: 768px) {
-    .admin-cards {
-      flex-direction: column; /* Stack cards vertically on small screens */
-      align-items: center;
-    }
-  
-    .admin-card {
-      margin: 1rem 0; /* Vertical margin between cards */
-      width: 100%;
-    }
+  .top-products thead {
+    display: none;
   }
-  
-
-  
+}

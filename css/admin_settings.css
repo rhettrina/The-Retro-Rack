@@ -37,7 +37,8 @@
     color: var(--black);
 }
 
-.creator-form input {
+.creator-form input,
+.creator-form select {
     width: 100%;
     padding: 0.8rem;
     margin-bottom: 1.5rem;
@@ -80,7 +81,8 @@
 
 /* Table Wrapper to allow scrolling */
 .table-wrapper {
-    max-height: 400px; /* Set a max height for the table */
+    max-height: 400px;
+    /* Set a max height for the table */
     overflow-y: auto;
 }
 
@@ -108,7 +110,7 @@
     background-color: #f9f9f9;
 }
 
-/* Action Buttons - Style from admin_products.css */
+/* Action Buttons */
 .btn-action {
     padding: 0.5rem 1rem;
     color: var(--white);
@@ -131,31 +133,123 @@
     opacity: 0.8;
 }
 
-/* Style for select dropdown */
-.creator-form select {
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    /* Sit on top */
+    left: 0;
+    top: 0;
     width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--black);
-    border-radius: 5px;
-    background-color: var(--white);
-    color: var(--black);
-    appearance: none;
+    height: 100%;
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Black w/ opacity */
 }
 
-/* Optional: Custom arrow for select */
-.creator-form .select-wrapper {
+.modal-content {
+    background-color: var(--white);
+    margin: 15% auto;
+    /* Center vertically */
+    padding: 20px;
+    border: 1px solid var(--black);
+    width: 30%;
+    border-radius: 8px;
     position: relative;
 }
 
-.creator-form .select-wrapper::after {
-    content: '\25BC'; /* Down arrow */
-    position: absolute;
-    top: 50%;
-    right: 1rem;
-    transform: translateY(-50%);
-    pointer-events: none;
+.close-btn {
     color: var(--black);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--orange);
+    text-decoration: none;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.modal-actions .btn {
+    margin-left: 10px;
+}
+
+.confirm-btn {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.cancel-btn {
+    background-color: #ccc;
+    color: var(--black);
+}
+
+/* Notification Modal Specific */
+#notificationModal .modal-content {
+    text-align: center;
+}
+
+#notificationModal .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+/* Edit Admin Modal Specific */
+#editAdminModal .modal-content {
+    max-width: 500px;
+    margin: 5% auto;
+    padding: 20px;
+    position: relative;
+}
+
+#editAdminModal h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#editAdminModal label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--black);
+}
+
+#editAdminModal input,
+#editAdminModal select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--black);
+    border-radius: 5px;
+}
+
+#editAdminModal .btn {
+    background-color: var(--orange);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#editAdminModal .btn:hover {
+    background-color: var(--black);
+    color: var(--white);
 }
 
 /* Responsive Adjustments */
@@ -166,5 +260,9 @@
 
     .creator-form {
         margin-bottom: 2rem;
+    }
+
+    .modal-content {
+        width: 80%;
     }
 }

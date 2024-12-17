@@ -109,9 +109,16 @@ if (isset($_GET['message'])) {
                 <label for="productCategory">Category</label>
                 <select id="productCategory" name="productCategory" required>
                     <option value="">Select category</option>
-                    <option value="T-Shirts">T-Shirts</option>
-                    <option value="Jeans">Jeans</option>
-                    <option value="Jackets">Jackets</option>
+                    <option value="Vintage">Vintage</option>
+                    <option value="Designer">Designer</option>
+                    <option value="Casual Wear">Casual Wear</option>
+                    <option value="Formal Wear">Formal Wear</option>
+                    <option value="Outerwear">Outerwear</option>
+                    <option value="Activewear">Activewear</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Footwear">Footwear</option>
+                    <option value="Plus Size">Plus Size</option>
+                    <option value="Maternity">Maternity</option>
                     <!-- Add more categories as needed -->
                 </select>
 

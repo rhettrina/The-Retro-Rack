@@ -2,15 +2,15 @@
 // delete_admin.php
 
 require_once 'config.php';
+session_start();
 
 // Check if 'id' is set in the URL
 if (isset($_GET['id'])) {
     $admin_id = intval($_GET['id']);
 
-
-    session_start();
     if ($_SESSION['admin_id'] == $admin_id) {
-        header("Location: admin_settings.php?error=Cannot delete your own account.");
+        $_SESSION['errors'] = ["Cannot delete your own account."];
+        header("Location: admin_settings.php");
         exit();
     }
 
@@ -20,17 +20,20 @@ if (isset($_GET['id'])) {
         mysqli_stmt_bind_param($stmt, "i", $admin_id);
 
         if (mysqli_stmt_execute($stmt)) {
-            header("Location: admin_settings.php?message=Admin deleted successfully.");
+            $_SESSION['success'] = "Admin deleted successfully.";
+            header("Location: admin_settings.php");
             exit();
         } else {
-            header("Location: admin_settings.php?error=Error deleting admin.");
+            $_SESSION['errors'] = ["Error deleting admin."];
+            header("Location: admin_settings.php");
             exit();
         }
 
         mysqli_stmt_close($stmt);
     }
 } else {
-    header("Location: admin_settings.php?error=Invalid request.");
+    $_SESSION['errors'] = ["Invalid request."];
+    header("Location: admin_settings.php");
     exit();
 }
 

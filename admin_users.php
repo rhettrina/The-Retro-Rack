@@ -32,7 +32,7 @@ $users = getAllUsers();
             </div>
 
             <div class="users-table">
-                <a href="#" class="btn add-user-btn"><i class="fas fa-user-plus"></i> Add New User</a>
+
                 <table>
                     <thead>
                         <tr>
