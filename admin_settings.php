@@ -12,9 +12,11 @@ $result = mysqli_query($conn, $query);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Admin Settings - Clothing Store</title>
+
     <!-- Link to existing styles.css -->
     <link rel="stylesheet" href="./css/styles.css">
     <!-- Link to new admin_settings.css -->
@@ -22,69 +24,9 @@ $result = mysqli_query($conn, $query);
     <!-- Include Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
-<body>
-    <!-- Header -->
-    <header class="top-nav" id="admin-header">
-        <div class="container">
-            <div class="welcome">
-                <span id="currentDateTime"></span>
-            </div>
-            
-            <script>
-                function updateDateTime() {
-                    const now = new Date();
-                    const options = { 
-                        weekday: 'long', 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric', 
-                        hour: '2-digit', 
-                        minute: '2-digit', 
-                        second: '2-digit' 
-                    };
-                    document.getElementById('currentDateTime').textContent = now.toLocaleString('en-US', options);
-                }
-            
-                updateDateTime();
-                setInterval(updateDateTime, 1000); // Update every second
-            </script>
-            
-            <ul class="nav-links">
-                <li><a href="#"><i class="fas fa-bell"></i></a></li>
-                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
-        </div>
-    </header>
 
-    <nav class="navigation">
-        <div class="nav-center container d-flex">
-            <a href="admin_dashboard.html" class="logo">Clothing Store Admin</a>
-            <ul class="nav-list d-flex">
-                <li class="nav-item">
-                    <a href="admin_dashboard.html" class="nav-link">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_products.php" class="nav-link">Products</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_orders.html" class="nav-link">Orders</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_users.php" class="nav-link">Users</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_report.html" class="nav-link">Reports</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_settings.php" class="nav-link active">Settings</a>
-                </li>
-            </ul>
-            <!-- Hamburger Menu for Mobile -->
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
+<body>
+    <?php include 'adminheader.php'; ?>
 
     <!-- Main Content -->
     <section class="section main-admin">
@@ -203,8 +145,8 @@ $result = mysqli_query($conn, $query);
                         </div>
                     </div>
                 </div>
-                </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -213,4 +155,5 @@ $result = mysqli_query($conn, $query);
         // Add JavaScript here if needed (e.g., form validation)
     </script>
 </body>
+
 </html>

@@ -1,3 +1,10 @@
+<?php
+
+
+// Get the current page name
+$current_page = basename($_SERVER['PHP_SELF']);
+?>
+
 <link rel="stylesheet" href="./css/index.css">
 
 <div class="top-nav">
@@ -99,19 +106,24 @@
         <!-- Navigation List -->
         <ul class="nav-list d-flex">
             <li class="nav-item">
-                <a href="index.php" class="nav-link">Home</a>
+                <a href="index.php" class="nav-link <?php if ($current_page == 'index.php')
+                    echo 'active'; ?>">Home</a>
             </li>
             <li class="nav-item">
-                <a href="product.php" class="nav-link">Shop</a>
+                <a href="product.php" class="nav-link <?php if ($current_page == 'product.php')
+                    echo 'active'; ?>">Shop</a>
             </li>
             <li class="nav-item">
-                <a href="terms.xml" class="nav-link">Terms</a>
+                <a href="terms.xml" class="nav-link <?php if ($current_page == 'terms.xml')
+                    echo 'active'; ?>">Terms</a>
             </li>
             <li class="nav-item">
-                <a href="about.php" class="nav-link">About</a>
+                <a href="about.php" class="nav-link <?php if ($current_page == 'about.php')
+                    echo 'active'; ?>">About</a>
             </li>
             <li class="nav-item">
-                <a href="contact.php" class="nav-link">Contact</a>
+                <a href="contact.php" class="nav-link <?php if ($current_page == 'contact.php')
+                    echo 'active'; ?>">Contact</a>
             </li>
             <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                 <!-- Welcome User -->

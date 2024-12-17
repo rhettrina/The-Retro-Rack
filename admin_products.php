@@ -24,69 +24,7 @@ if (isset($_GET['message'])) {
 
 <body>
 
-    <!-- Header -->
-    <header class="top-nav" id="admin-header">
-        <div class="container">
-            <div class="welcome">
-                <span id="currentDateTime"></span>
-            </div>
-            
-            <script>
-                function updateDateTime() {
-                    const now = new Date();
-                    const options = { 
-                        weekday: 'long', 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric', 
-                        hour: '2-digit', 
-                        minute: '2-digit', 
-                        second: '2-digit' 
-                    };
-                    document.getElementById('currentDateTime').textContent = now.toLocaleString('en-US', options);
-                }
-            
-                updateDateTime();
-                setInterval(updateDateTime, 1000); // Update every second
-            </script>
-            
-            <ul class="nav-links">
-                <li><a href="#"><i class="fas fa-bell"></i></a></li>
-                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
-        </div>
-    </header>
-
-
-    <nav class="navigation">
-        <div class="nav-center container d-flex">
-            <a href="admin_dashboard.html" class="logo">Clothing Store Admin</a>
-            <ul class="nav-list d-flex">
-                <li class="nav-item">
-                    <a href="admin_dashboard.html" class="nav-link">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_products.php" class="nav-link active">Products</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_orders.html" class="nav-link">Orders</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_users.php" class="nav-link">Users</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_report.html" class="nav-link">Reports</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_settings.php" class="nav-link">Settings</a>
-                </li>
-            </ul>
-            <!-- Hamburger Menu for Mobile -->
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
+    <?php include 'adminheader.php'; ?>
 
     <!-- Main Content -->
     <section class="section main-admin">
@@ -131,22 +69,19 @@ if (isset($_GET['message'])) {
                                 <td>₱<?php echo htmlspecialchars(number_format($row['price'], 2)); ?></td>
                                 <td><?php echo htmlspecialchars($row['category']); ?></td>
                                 <td>
-    <!-- Actions for edit and delete -->
-    <a href="#" class="btn-action edit" 
-       data-id="<?php echo $row['id']; ?>" 
-       data-name="<?php echo htmlspecialchars($row['name']); ?>" 
-       data-price="<?php echo $row['price']; ?>" 
-       data-stock="<?php echo $row['stock']; ?>" 
-       data-category="<?php echo htmlspecialchars($row['category']); ?>" 
-       data-description="<?php echo htmlspecialchars($row['description']); ?>" 
-       data-image="<?php echo htmlspecialchars($row['image_path']); ?>">
-       <i class="fas fa-edit"></i>
-    </a>
-    <a href="#" class="btn-action delete" 
-       data-id="<?php echo $row['id']; ?>">
-       <i class="fas fa-trash"></i>
-    </a>
-</td>
+                                    <!-- Actions for edit and delete -->
+                                    <a href="#" class="btn-action edit" data-id="<?php echo $row['id']; ?>"
+                                        data-name="<?php echo htmlspecialchars($row['name']); ?>"
+                                        data-price="<?php echo $row['price']; ?>" data-stock="<?php echo $row['stock']; ?>"
+                                        data-category="<?php echo htmlspecialchars($row['category']); ?>"
+                                        data-description="<?php echo htmlspecialchars($row['description']); ?>"
+                                        data-image="<?php echo htmlspecialchars($row['image_path']); ?>">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="#" class="btn-action delete" data-id="<?php echo $row['id']; ?>">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
 
                             </tr>
                         <?php endwhile; ?>
@@ -227,105 +162,105 @@ if (isset($_GET['message'])) {
         }
 
         // Handle Add Product form submission
-const addProductForm = document.getElementById('addProductForm');
-addProductForm.addEventListener('submit', function (e) {
-    e.preventDefault();
+        const addProductForm = document.getElementById('addProductForm');
+        addProductForm.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-    const formData = new FormData(addProductForm);
+            const formData = new FormData(addProductForm);
 
-    // Check if editing or adding
-    const isEditing = document.getElementById('productId');
-    const endpoint = isEditing ? 'edit_product.php' : 'add_product.php';
+            // Check if editing or adding
+            const isEditing = document.getElementById('productId');
+            const endpoint = isEditing ? 'edit_product.php' : 'add_product.php';
 
-    fetch(endpoint, {
-        method: 'POST',
-        body: formData,
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                alert(data.message);
-                closeModal();
-                window.location.reload(); // Reload the page to see updates
-            } else {
-                alert(data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred while saving the product.');
-        });
-});
-
-
-
-        // Get all edit buttons
-const editButtons = document.querySelectorAll('.btn-action.edit');
-
-// Add click event listeners to edit buttons
-editButtons.forEach(button => {
-    button.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        // Populate the modal with the product data
-        const id = this.getAttribute('data-id');
-        const name = this.getAttribute('data-name');
-        const price = this.getAttribute('data-price');
-        const stock = this.getAttribute('data-stock');
-        const category = this.getAttribute('data-category');
-        const description = this.getAttribute('data-description');
-
-        document.getElementById('productName').value = name;
-        document.getElementById('productPrice').value = price;
-        document.getElementById('productStock').value = stock;
-        document.getElementById('productCategory').value = category;
-        document.getElementById('productDescription').value = description;
-
-        // Add a hidden input field for the product ID
-        let hiddenIdField = document.getElementById('productId');
-        if (!hiddenIdField) {
-            hiddenIdField = document.createElement('input');
-            hiddenIdField.type = 'hidden';
-            hiddenIdField.id = 'productId';
-            hiddenIdField.name = 'productId';
-            addProductForm.appendChild(hiddenIdField);
-        }
-        hiddenIdField.value = id;
-
-        // Open the modal
-        openModal();
-    });
-});
-
-
-// Add event listener for delete buttons
-document.querySelectorAll('.btn-action.delete').forEach(button => {
-    button.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const id = this.getAttribute('data-id');
-        if (confirm('Are you sure you want to delete this product?')) {
-            fetch('delete_product.php', {
+            fetch(endpoint, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id }),
+                body: formData,
             })
                 .then(response => response.json())
                 .then(data => {
                     if (data.status === 'success') {
                         alert(data.message);
-                        window.location.reload();
+                        closeModal();
+                        window.location.reload(); // Reload the page to see updates
                     } else {
                         alert(data.message);
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('An error occurred while deleting the product.');
+                    alert('An error occurred while saving the product.');
                 });
-        }
-    });
-});
+        });
+
+
+
+        // Get all edit buttons
+        const editButtons = document.querySelectorAll('.btn-action.edit');
+
+        // Add click event listeners to edit buttons
+        editButtons.forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Populate the modal with the product data
+                const id = this.getAttribute('data-id');
+                const name = this.getAttribute('data-name');
+                const price = this.getAttribute('data-price');
+                const stock = this.getAttribute('data-stock');
+                const category = this.getAttribute('data-category');
+                const description = this.getAttribute('data-description');
+
+                document.getElementById('productName').value = name;
+                document.getElementById('productPrice').value = price;
+                document.getElementById('productStock').value = stock;
+                document.getElementById('productCategory').value = category;
+                document.getElementById('productDescription').value = description;
+
+                // Add a hidden input field for the product ID
+                let hiddenIdField = document.getElementById('productId');
+                if (!hiddenIdField) {
+                    hiddenIdField = document.createElement('input');
+                    hiddenIdField.type = 'hidden';
+                    hiddenIdField.id = 'productId';
+                    hiddenIdField.name = 'productId';
+                    addProductForm.appendChild(hiddenIdField);
+                }
+                hiddenIdField.value = id;
+
+                // Open the modal
+                openModal();
+            });
+        });
+
+
+        // Add event listener for delete buttons
+        document.querySelectorAll('.btn-action.delete').forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const id = this.getAttribute('data-id');
+                if (confirm('Are you sure you want to delete this product?')) {
+                    fetch('delete_product.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id }),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status === 'success') {
+                                alert(data.message);
+                                window.location.reload();
+                            } else {
+                                alert(data.message);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('An error occurred while deleting the product.');
+                        });
+                }
+            });
+        });
 
 
     </script>

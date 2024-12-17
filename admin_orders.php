@@ -72,68 +72,7 @@ if (!$result) {
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="top-nav" id="admin-header">
-        <div class="container">
-            <div class="welcome">
-                <span id="currentDateTime"></span>
-            </div>
-
-            <script>
-                function updateDateTime() {
-                    const now = new Date();
-                    const options = {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        second: '2-digit'
-                    };
-                    document.getElementById('currentDateTime').textContent = now.toLocaleString('en-US', options);
-                }
-
-                updateDateTime();
-                setInterval(updateDateTime, 1000); // Update every second
-            </script>
-
-            <ul class="nav-links">
-                <li><a href="#"><i class="fas fa-bell"></i></a></li>
-                <li><a href="admin_logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <nav class="navigation">
-        <div class="nav-center container d-flex">
-            <a href="admin_dashboard.php" class="logo">Clothing Store Admin</a>
-            <ul class="nav-list d-flex">
-                <li class="nav-item">
-                    <a href="admin_dashboard.php" class="nav-link">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_products.php" class="nav-link">Products</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_orders.php" class="nav-link active">Orders</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_users.php" class="nav-link">Users</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_report.php" class="nav-link">Reports</a>
-                </li>
-                <li class="nav-item">
-                    <a href="admin_settings.php" class="nav-link">Settings</a>
-                </li>
-            </ul>
-            <!-- Hamburger Menu for Mobile -->
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
+    <?php include 'adminheader.php'; ?>
 
     <!-- Main Content -->
     <section class="section main-admin">
