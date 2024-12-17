@@ -17,7 +17,6 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($product = $result->fetch_assoc()) {
-  // Close the statement
   $stmt->close();
 } else {
   header('Location: 404.php');
@@ -30,19 +29,70 @@ if ($product = $result->fetch_assoc()) {
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><?php echo htmlspecialchars($product['name']); ?> - Product Details</title>
   <!-- Box icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
-  <!-- Custom StyleSheet -->
-  <link rel="stylesheet" href="./css/styles.css" />
-  <title>Boy’s T-Shirt - Codevo</title>
+  <!-- General Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Inline CSS for Specific Styles -->
+  <style>
+    /* Align buttons next to each other */
+    .product-detail .button-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .product-detail .button-group form {
+      margin-right: 1rem;
+    }
+
+    .product-detail .button-group form:last-child {
+      margin-right: 0;
+    }
+
+    .product-detail .button-group button {
+      flex: 1;
+      padding: 1rem 2rem;
+      font-size: 1.6rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .product-detail .button-group .add-cart {
+      background-color: #ff9f1a;
+      color: #fff;
+    }
+
+    .product-detail .button-group .add-cart:hover {
+      background-color: #e68a00;
+    }
+
+    .product-detail .button-group .buy-now {
+      background-color: #f57224;
+      color: #fff;
+    }
+
+    .product-detail .button-group .buy-now:hover {
+      background-color: #f45c14;
+    }
+
+    /* Quantity input styling */
+    .product-detail .quantity-input {
+      width: 5rem;
+      padding: 0.5rem;
+      margin-right: 2rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
 </head>
 
 <body>
   <!-- Navigation -->
   <?php include 'visitorheader.php'; ?>
 
-  <!-- Product Details -->
   <!-- Product Details -->
   <section class="section product-detail">
     <div class="details container">
@@ -57,31 +107,28 @@ if ($product = $result->fetch_assoc()) {
         <h1><?php echo htmlspecialchars($product['name']); ?></h1>
         <div class="price">$<?php echo number_format($product['price'], 2); ?></div>
 
-        <!-- If you have sizes or other options, you can display them here -->
-        <!-- For example, if you have a 'size' field in your database -->
-        <?php if (!empty($product['size'])): ?>
-          <form>
-            <div>
-              <select>
-                <option value="" selected disabled>Select Size</option>
-                <?php
-                // Assuming 'size' is stored as a comma-separated string
-                $sizes = explode(',', $product['size']);
-                foreach ($sizes as $size) {
-                  echo '<option value="' . htmlspecialchars(trim($size)) . '">' . htmlspecialchars(trim($size)) . '</option>';
-                }
-                ?>
-              </select>
-              <span><i class="bx bx-chevron-down"></i></span>
-            </div>
-          </form>
-        <?php endif; ?>
+        <!-- Quantity Input -->
+        <div class="form">
+          <input type="number" id="quantity" name="quantity" value="1" min="1" max="<?php echo $product['stock']; ?>"
+            class="quantity-input" />
+        </div>
 
-        <form class="form" method="get" action="add_to_cart.php">
-          <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>" />
-          <input type="number" name="quantity" value="1" min="1" max="<?php echo $product['stock']; ?>" />
-          <button type="submit" class="addCart">Add To Cart</button>
-        </form>
+        <!-- Buttons -->
+        <div class="button-group">
+          <!-- Add to Cart Button -->
+          <form method="post" action="add_to_cart.php">
+            <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>" />
+            <input type="hidden" name="quantity" id="add-to-cart-quantity" value="1" />
+            <button type="submit" class="add-cart">Add to Cart</button>
+          </form>
+          <!-- Buy Now Button -->
+          <form method="post" action="checkout.php">
+            <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>" />
+            <input type="hidden" name="quantity" id="buy-now-quantity" value="1" />
+            <button type="submit" class="buy-now">Buy Now</button>
+          </form>
+        </div>
+
         <h3>Product Detail</h3>
         <p>
           <?php echo nl2br(htmlspecialchars($product['description'])); ?>
@@ -90,21 +137,19 @@ if ($product = $result->fetch_assoc()) {
     </div>
   </section>
 
-
   <!-- Footer -->
   <?php include 'visitorfooter.php'; ?>
+
   <!-- Custom Script -->
   <script src="./js/index.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.0.min.js"
-    integrity="sha384-JUMjoW8OzDJw4oFpWIB2Bu/c6768ObEthBMVSiIx4ruBIEdyNSUQAjJNFqT5pnJ6"
-    crossorigin="anonymous"></script>
-  <script src="./js/zoomsl.min.js"></script>
   <script>
-    $(function () {
-      console.log("hello");
-      $("#zoom").imagezoomsl({
-        zoomrange: [4, 4],
-      });
+    const quantityInput = document.getElementById('quantity');
+    const addToCartQuantityInput = document.getElementById('add-to-cart-quantity');
+    const buyNowQuantityInput = document.getElementById('buy-now-quantity');
+
+    quantityInput.addEventListener('input', function () {
+      addToCartQuantityInput.value = this.value;
+      buyNowQuantityInput.value = this.value;
     });
   </script>
 </body>

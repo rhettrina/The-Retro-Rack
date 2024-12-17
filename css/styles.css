@@ -34,7 +34,12 @@ body {
 }
 
 /* Apply 'Lobster' Font to Headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Lobster', cursive;
 }
 
@@ -306,6 +311,7 @@ Hero Media Query
     left: 0;
   }
 }
+
 @media only screen and (max-width: 999px) {
   .glide__slide--active .left {
     top: 15%;
@@ -342,6 +348,7 @@ Hero Media Query
   .hero .left span {
     font-size: 1.4rem;
   }
+
   .hero .left p {
     font-size: 1.5rem;
     width: 80%;
@@ -419,6 +426,7 @@ Hero Media Query
     width: 25rem;
   }
 }
+
 @media only screen and (max-width: 768px) {
   .section {
     padding: 5rem 0;
@@ -1489,26 +1497,31 @@ th:last-child {
 
 /* Logout Modal Styles */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; 
-  z-index: 1000; /* Sit on top */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  /* Sit on top */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; 
-  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Black w/ opacity */
 }
 
 .modal-content {
   background-color: var(--beige);
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto;
+  /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid var(--orange);
-  width: 30%; /* Could be more or less, depending on screen size */
+  width: 30%;
+  /* Could be more or less, depending on screen size */
   border-radius: 8px;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .close-button {
@@ -1546,7 +1559,8 @@ th:last-child {
 }
 
 .cancel-btn:hover {
-  background-color: #943800; /* Darker shade of orange */
+  background-color: #943800;
+  /* Darker shade of orange */
 }
 
 .logout-btn {
@@ -1555,7 +1569,8 @@ th:last-child {
 }
 
 .logout-btn:hover {
-  background-color: #333333; /* Darker shade of black */
+  background-color: #333333;
+  /* Darker shade of black */
 }
 
 
@@ -1618,7 +1633,8 @@ th:last-child {
   color: red;
   font-size: 1.4rem;
   margin-top: 0.5rem;
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
 }
 
 /* Pagination Styles */
@@ -1637,7 +1653,8 @@ th:last-child {
   color: #333;
   text-decoration: none;
   border-radius: 4px;
-  transition: background-color 0.3s; /* Add transition for background color */
+  transition: background-color 0.3s;
+  /* Add transition for background color */
 }
 
 .pagination .container span {
@@ -1666,12 +1683,13 @@ th:last-child {
   position: fixed;
   top: 20px;
   right: 20px;
-  background-color: #4BB543; /* Green background */
+  background-color: #4BB543;
+  /* Green background */
   color: #fff;
   padding: 15px 20px;
   border-radius: 5px;
   z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   opacity: 0;
   animation: fadeInOut 5s forwards;
 }
@@ -1681,10 +1699,13 @@ th:last-child {
     opacity: 0;
     transform: translateY(-20px);
   }
-  10%, 90% {
+
+  10%,
+  90% {
     opacity: 1;
     transform: translateY(0);
   }
+
   100% {
     opacity: 0;
     transform: translateY(-20px);
@@ -1694,115 +1715,122 @@ th:last-child {
 /* Profile and Addresses Containers */
 .profile-container,
 .addresses-container {
-    max-width: 800px;
-    margin: 5rem auto;
-    padding: 2rem;
-    background-color: var(--white);
-    border: 1px solid var(--orange);
-    border-radius: 8px;
+  max-width: 800px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background-color: var(--white);
+  border: 1px solid var(--orange);
+  border-radius: 8px;
 }
 
 .profile-container h1,
 .addresses-container h1,
 .addresses-container h2 {
-    margin-bottom: 2rem;
-    color: var(--black);
+  margin-bottom: 2rem;
+  color: var(--black);
 }
 
 .profile-container form label,
 .addresses-container form label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--black);
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--black);
 }
 
 .profile-container form input,
 .addresses-container form input,
 .addresses-container form textarea {
-    width: 100%;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--black);
-    border-radius: 5px;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--black);
+  border-radius: 5px;
 }
 
 .profile-container form button,
 .addresses-container form button {
-    background-color: var(--orange);
-    color: var(--white);
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: var(--orange);
+  color: var(--white);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .profile-container form button:hover,
 .addresses-container form button:hover {
-    background-color: var(--black);
+  background-color: var(--black);
 }
 
 .success-message {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid #c3e6cb;
-    border-radius: 5px;
+  background-color: #d4edda;
+  color: #155724;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
 }
 
 .address-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 2rem;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
 }
 
 .address-list li {
-    background-color: var(--beige);
-    padding: 1rem;
-    border: 1px solid var(--black);
-    margin-bottom: 1rem;
-    border-radius: 5px;
+  background-color: var(--beige);
+  padding: 1rem;
+  border: 1px solid var(--black);
+  margin-bottom: 1rem;
+  border-radius: 5px;
 }
 
 /* Buttons */
 .btn {
-    display: inline-block;
-    text-decoration: none;
-    margin-top: 1rem;
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 1rem;
 }
 
 .btn:hover {
-    background-color: var(--black);
-    color: var(--white);
+  background-color: var(--black);
+  color: var(--white);
 }
 
 /* Popup Message Styles */
 .popup-message {
   position: fixed;
-  top: 20px; /* Adjust as needed */
-  right: 20px; /* Adjust as needed */
-  background-color: #ffcc00; /* Background color of your choice */
-  color: #000; /* Text color */
+  top: 20px;
+  /* Adjust as needed */
+  right: 20px;
+  /* Adjust as needed */
+  background-color: #ffcc00;
+  /* Background color of your choice */
+  color: #000;
+  /* Text color */
   padding: 15px 20px;
   border-radius: 5px;
   z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   opacity: 0;
   animation: fadeInOut 5s forwards;
 }
 
 @keyframes fadeInOut {
   0% {
-      opacity: 0;
-      transform: translateY(-20px);
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  10%, 90% {
-      opacity: 1;
-      transform: translateY(0);
+
+  10%,
+  90% {
+    opacity: 1;
+    transform: translateY(0);
   }
+
   100% {
-      opacity: 0;
-      transform: translateY(-20px);
+    opacity: 0;
+    transform: translateY(-20px);
   }
 }
 
@@ -1819,7 +1847,8 @@ th:last-child {
   border-collapse: collapse;
 }
 
-.cart-table th, .cart-table td {
+.cart-table th,
+.cart-table td {
   padding: 15px;
   border-bottom: 1px solid #eaeaea;
   text-align: left;
@@ -1881,4 +1910,118 @@ th:last-child {
   color: #fff;
   text-decoration: none;
   text-align: center;
+}
+
+
+/* Tabs */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.sidebar a.active {
+  font-weight: bold;
+  color: #ff5722;
+}
+
+/* Modal */
+.profile-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.profile-modal .modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  border-radius: 8px;
+}
+
+.profile-modal .close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.profile-modal .close-button:hover,
+.profile-modal .close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Address List */
+.address-list .address-item {
+  background-color: #fafafa;
+  padding: 15px;
+  border: 1px solid #eaeaea;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.address-item p {
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+  color: #555;
+}
+
+.address-item button {
+  background-color: #ff5722;
+  color: #fff;
+  padding: 8px 15px;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.address-item button:hover {
+  background-color: #e64a19;
+}
+
+.address-item form {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Button Styles */
+.btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.add-to-cart {
+  background-color: #f57224;
+  /* Orange color similar to Lazada */
+  color: #fff;
+}
+
+.buy-now {
+  background-color: #d3232a;
+  /* Red color for Buy Now */
+  color: #fff;
+  margin-left: 10px;
+}
+
+.btn:hover {
+  opacity: 0.9;
 }

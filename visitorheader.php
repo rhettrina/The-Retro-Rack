@@ -1,5 +1,3 @@
-
-
 <link rel="stylesheet" href="./css/index.css">
 
 <div class="top-nav">
@@ -117,8 +115,14 @@
             </li>
             <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                 <!-- Welcome User -->
-                <li class="nav-item" id="welcomeUser">
-                    <a href="#" class="nav-link"><?php echo "Welcome " . $_SESSION['username']; ?></a>
+                <?php
+                $welcomeText = "Welcome " . $_SESSION['username'];
+                $textLength = strlen($welcomeText);
+                ?>
+                <li class="nav-item" id="welcomeUser" style="--text-length: <?= $textLength ?>;">
+                    <a href="#" class="nav-link scrolling-text">
+                        <span><?php echo $welcomeText; ?></span>
+                    </a>
                 </li>
             <?php endif; ?>
         </ul>

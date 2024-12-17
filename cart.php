@@ -6,23 +6,16 @@ include 'config.php';
 
 // Check if the user is logged in
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    // Set a message to display on the login page
-    $_SESSION['message'] = "You need to log in to access this page.";
+  // Set a message to display on the login page
+  $_SESSION['message'] = "You need to log in to access this page.";
 
-    // Redirect to loginview.php
-    header("Location: loginview.php");
-    exit();
+  // Redirect to loginview.php
+  header("Location: loginview.php");
+  exit();
 }
 
 // Fetch the user ID from the session
-if (isset($_SESSION['id'])) {
-    $user_id = $_SESSION['id'];
-} else {
-    // Handle the case where user_id is not set
-    $_SESSION['message'] = "User ID not found. Please log in again.";
-    header("Location: loginview.php");
-    exit();
-}
+$user_id = $_SESSION['id'];
 
 // Fetch cart items for the user
 $stmt = $conn->prepare("
@@ -38,7 +31,7 @@ $result = $stmt->get_result();
 // Initialize an array to store cart items
 $cart_items = [];
 while ($row = $result->fetch_assoc()) {
-    $cart_items[] = $row;
+  $cart_items[] = $row;
 }
 $stmt->close();
 
@@ -68,48 +61,50 @@ $total = 0;
       <div class="cart-header">
         <h1>Your Shopping Cart</h1>
       </div>
-      <div class="cart-table">
-        <table>
-          <tr>
-            <th><input type="checkbox" id="select-all" /></th>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-            <th>Action</th>
-          </tr>
-          <?php
-          foreach ($cart_items as $item):
-            $subtotal = $item['price'] * $item['quantity'];
-            $total += $subtotal;
-            ?>
+      <form method="post" action="update_cart.php" id="cart-form">
+        <div class="cart-table">
+          <table>
             <tr>
-              <td><input type="checkbox" class="select-item" /></td>
-              <td>
-                <div class="cart-info">
-                  <img src="<?php echo $item['image_path']; ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" />
-                  <div>
-                    <p><?php echo htmlspecialchars($item['name']); ?></p>
-                  </div>
-                </div>
-              </td>
-              <td>$<?php echo number_format($item['price'], 2); ?></td>
-              <td>
-                <form method="post" action="update_cart.php" class="quantity-form">
-                  <input type="hidden" name="product_id" value="<?php echo $item['product_id']; ?>" />
-                  <div class="quantity-controls">
-                    <button type="button" class="quantity-minus">-</button>
-                    <input type="number" name="quantity" value="<?php echo $item['quantity']; ?>" min="1" readonly />
-                    <button type="button" class="quantity-plus">+</button>
-                  </div>
-                </form>
-              </td>
-              <td>$<?php echo number_format($subtotal, 2); ?></td>
-              <td><a href="remove_from_cart.php?id=<?php echo $item['product_id']; ?>" class="remove-btn">Remove</a></td>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+              <th>Action</th>
             </tr>
-          <?php endforeach; ?>
-        </table>
-      </div>
+            <?php
+            foreach ($cart_items as $item):
+              $subtotal = $item['price'] * $item['quantity'];
+              $total += $subtotal;
+              ?>
+              <tr>
+                <td>
+                  <div class="cart-info">
+                    <img src="<?php echo $item['image_path']; ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" />
+                    <div>
+                      <p><?php echo htmlspecialchars($item['name']); ?></p>
+                    </div>
+                  </div>
+                </td>
+                <td>$<?php echo number_format($item['price'], 2); ?></td>
+                <td>
+                  <div class="quantity-controls">
+                    <button type="button" class="quantity-minus"
+                      data-product-id="<?php echo $item['product_id']; ?>">-</button>
+                    <input type="number" name="quantities[<?php echo $item['product_id']; ?>]"
+                      value="<?php echo $item['quantity']; ?>" min="1" readonly />
+                    <button type="button" class="quantity-plus"
+                      data-product-id="<?php echo $item['product_id']; ?>">+</button>
+                  </div>
+                </td>
+                <td class="subtotal" data-price="<?php echo $item['price']; ?>">
+                  $<?php echo number_format($subtotal, 2); ?>
+                </td>
+                <td><a href="remove_from_cart.php?id=<?php echo $item['product_id']; ?>" class="remove-btn">Remove</a></td>
+              </tr>
+            <?php endforeach; ?>
+          </table>
+        </div>
+      </form>
     <?php else: ?>
       <p>Your cart is empty.</p>
     <?php endif; ?>
@@ -122,22 +117,22 @@ $total = 0;
       </div>
       <?php if (!empty($cart_items)): ?>
         <div class="cart-actions">
+          <button type="button" onclick="updateCart()" class="update-cart btn">Update Cart</button>
           <a href="checkout.php" class="checkout btn">Proceed To Checkout</a>
         </div>
       <?php endif; ?>
     </div>
   </div>
 
-
-
   <?php include 'visitorfooter.php'; ?>
 
   <!-- Custom Script -->
   <script src="./js/index.js"></script>
-  <!-- Custom Script -->
-  <script src="./js/index.js"></script>
-  <!-- Include this script at the end of your `cart.php` -->
   <script>
+    function updateCart() {
+      document.getElementById('cart-form').submit();
+    }
+
     document.querySelectorAll('.quantity-minus').forEach(function (button) {
       button.addEventListener('click', function () {
         var productId = this.getAttribute('data-product-id');
@@ -146,6 +141,8 @@ $total = 0;
         if (quantity > 1) {
           quantity--;
           input.value = quantity;
+          updateSubtotal(productId, quantity);
+          updateTotal();
         }
       });
     });
@@ -157,8 +154,26 @@ $total = 0;
         var quantity = parseInt(input.value);
         quantity++;
         input.value = quantity;
+        updateSubtotal(productId, quantity);
+        updateTotal();
       });
     });
+
+    function updateSubtotal(productId, quantity) {
+      var priceElement = document.querySelector('.subtotal[data-product-id="' + productId + '"]');
+      var pricePerUnit = parseFloat(priceElement.getAttribute('data-price'));
+      var newSubtotal = pricePerUnit * quantity;
+      priceElement.textContent = '$' + newSubtotal.toFixed(2);
+    }
+
+    function updateTotal() {
+      var total = 0;
+      document.querySelectorAll('.subtotal').forEach(function (element) {
+        var subtotal = parseFloat(element.textContent.replace('$', ''));
+        total += subtotal;
+      });
+      document.getElementById('total-price').textContent = total.toFixed(2);
+    }
   </script>
 </body>
 
