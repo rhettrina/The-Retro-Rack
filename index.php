@@ -1,8 +1,15 @@
 <?php
 session_start();
 include 'config.php'; // Ensure this path correctly points to your config file
-?>
 
+// Fetch New Arrivals (e.g., latest 8 products)
+$new_arrivals_query = "SELECT * FROM `products` ORDER BY `created_at` DESC LIMIT 8";
+$new_arrivals_result = mysqli_query($conn, $new_arrivals_query);
+
+// Fetch Featured Products
+$featured_query = "SELECT * FROM `products` WHERE `is_featured` = 1 LIMIT 8";
+$featured_result = mysqli_query($conn, $featured_query);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +27,7 @@ include 'config.php'; // Ensure this path correctly points to your config file
     <!-- Custom StyleSheet -->
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/index.css">
-    <title>ecommerce Website</title>
+    <title>RetroRack - Home</title>
 </head>
 
 <body>
@@ -39,7 +46,7 @@ include 'config.php'; // Ensure this path correctly points to your config file
                                     <span class="">New Inspiration 2022</span>
                                     <h1 class="">NEW COLLECTION!</h1>
                                     <p>Trending from men's and women's style collection</p>
-                                    <a href="product.html" class="hero-btn">SHOP NOW</a>
+                                    <a href="product.php" class="hero-btn">SHOP NOW</a>
                                 </div>
                                 <div class="right">
                                     <img class="img1" src="./images/hero-1.png" alt="">
@@ -52,7 +59,7 @@ include 'config.php'; // Ensure this path correctly points to your config file
                                     <span>New Inspiration 2022</span>
                                     <h1>THE PERFECT MATCH!</h1>
                                     <p>Trending from men's and women's style collection</p>
-                                    <a href="product.html" class="hero-btn">SHOP NOW</a>
+                                    <a href="product.php" class="hero-btn">SHOP NOW</a>
                                 </div>
                                 <div class="right">
                                     <img class="img2" src="./images/hero-2.png" alt="">
@@ -93,162 +100,60 @@ include 'config.php'; // Ensure this path correctly points to your config file
     <section class="section new-arrival">
         <div class="title">
             <h1>NEW ARRIVALS</h1>
-            <p>All the latest picked from designer of our store</p>
+            <p>All the latest picks from the designers of our store</p>
         </div>
 
         <div class="product-center">
-            <div class="product-item">
-                <div class="overlay">
-                    <a href="productDetails.html" class="product-thumb">
-                        <img src="./images/product-1.jpg" alt="" />
-                    </a>
-                </div>
-                <div class="product-info">
-                    <span>MEN'S CLOTHES</span>
-                    <a href="productDetails.html">Quis Nostrud Exercitation</a>
-                    <h4>$700</h4>
-                </div>
-                <ul class="icons">
-                    <li><i class="bx bx-heart"></i></li>
-                    <li><i class="bx bx-search"></i></li>
-                    <li><i class="bx bx-cart"></i></li>
-                </ul>
-            </div>
-            <div class="product-item">
-                <div class="overlay">
-                    <a href="" class="product-thumb">
-                        <img src="./images/product-3.jpg" alt="" />
-                    </a>
-                    <span class="discount">50%</span>
-                </div>
-
-                <div class="product-info">
-                    <span>MEN'S CLOTHES</span>
-                    <a href="">Sonata White Men’s Shirt</a>
-                    <h4>$800</h4>
-                </div>
-                <ul class="icons">
-                    <li><i class="bx bx-heart"></i></li>
-                    <li><i class="bx bx-search"></i></li>
-                    <li><i class="bx bx-cart"></i></li>
-                </ul>
-            </div>
-            <div class="product-item">
-                <div class="overlay">
-                    <a href="" class="product-thumb">
-                        <img src="./images/product-2.jpg" alt="" />
-                    </a>
-                </div>
-                <div class="product-info">
-                    <span>MEN'S CLOTHES</span>
-                    <a href="">Concepts Solid Pink Men’s Polo</a>
-                    <h4>$150</h4>
-                </div>
-                <ul class="icons">
-                    <li><i class="bx bx-heart"></i></li>
-                    <li><i class="bx bx-search"></i></li>
-                    <li><i class="bx bx-cart"></i></li>
-                </ul>
-            </div>
-            <div class="product-item">
-                <div class="overlay">
-                    <a href="" class="product-thumb">
-                        <img src="./images/product-4.jpg" alt="" />
-                    </a>
-                    <span class="discount">50%</span>
-                </div>
-                <div class="product-info">
-                    <span>MEN'S CLOTHES</span>
-                    <a href="">Edor do eiusmod tempor</a>
-                    <h4>$900</h4>
-                </div>
-                <ul class="icons">
-                    <li><i class="bx bx-heart"></i></li>
-                    <li><i class="bx bx-search"></i></li>
-                    <li><i class="bx bx-cart"></i></li>
-                </ul>
-            </div>
-            <div class="product-item">
-                <div class="overlay">
-                    <a href="" class="product-thumb">
-                        <img src="./images/product-5.jpg" alt="" />
-                    </a>
-                </div>
-                <div class="product-info">
-                    <span>MEN'S CLOTHES</span>
-                    <a href="">Edor do eiusmod tempor</a>
-                    <h4>$100</h4>
-                </div>
-                <ul class="icons">
-                    <li><i class="bx bx-heart"></i></li>
-                    <li><i class="bx bx-search"></i></li>
-                    <li><i class="bx bx-cart"></i></li>
-                </ul>
-            </div>
-            <div class="product-item">
-                <div class="overlay">
-                    <a href="" class="product-thumb">
-                        <img src="./images/product-6.jpg" alt="" />
-                    </a>
-                </div>
-                <div class="product-info">
-                    <span>MEN'S CLOTHES</span>
-                    <a href="">Edor do eiusmod tempor</a>
-                    <h4>$500</h4>
-                </div>
-                <ul class="icons">
-                    <li><i class="bx bx-heart"></i></li>
-                    <li><i class="bx bx-search"></i></li>
-                    <li><i class="bx bx-cart"></i></li>
-                </ul>
-            </div>
-            <div class="product-item">
-                <div class="overlay">
-                    <a href="" class="product-thumb">
-                        <img src="./images/product-7.jpg" alt="" />
-                    </a>
-                    <span class="discount">50%</span>
-                </div>
-                <div class="product-info">
-                    <span>MEN'S CLOTHES</span>
-                    <a href="">Edor do eiusmod tempor</a>
-                    <h4>$200</h4>
-                </div>
-                <ul class="icons">
-                    <li><i class="bx bx-heart"></i></li>
-                    <li><i class="bx bx-search"></i></li>
-                    <li><i class="bx bx-cart"></i></li>
-                </ul>
-            </div>
-            <div class="product-item">
-                <div class="overlay">
-                    <a href="" class="product-thumb">
-                        <img src="./images/product-2.jpg" alt="" />
-                    </a>
-                </div>
-                <div class="product-info">
-                    <span>MEN'S CLOTHES</span>
-                    <a href="">Edor do eiusmod tempor</a>
-                    <h4>$560</h4>
-                </div>
-                <ul class="icons">
-                    <li><i class="bx bx-heart"></i></li>
-                    <li><i class="bx bx-search"></i></li>
-                    <li><i class="bx bx-cart"></i></li>
-                </ul>
-            </div>
+            <?php
+            if (mysqli_num_rows($new_arrivals_result) > 0) {
+                while ($product = mysqli_fetch_assoc($new_arrivals_result)) {
+                    ?>
+                    <div class="product-item">
+                        <div class="overlay">
+                            <a href="productDetails.php?id=<?php echo $product['id']; ?>" class="product-thumb">
+                                <img src="<?php echo htmlspecialchars($product['image_path']); ?>"
+                                    alt="<?php echo htmlspecialchars($product['name']); ?>" />
+                            </a>
+                            <?php if ($product['stock'] == 0) { ?>
+                                <span class="out-of-stock">Out of Stock</span>
+                            <?php } ?>
+                        </div>
+                        <div class="product-info">
+                            <span><?php echo htmlspecialchars($product['category']); ?></span>
+                            <a
+                                href="productDetails.php?id=<?php echo $product['id']; ?>"><?php echo htmlspecialchars($product['name']); ?></a>
+                            <h4>$<?php echo number_format($product['price'], 2); ?></h4>
+                        </div>
+                        <ul class="icons">
+                            <li><i class="bx bx-heart"></i></li>
+                            <li>
+                                <a href="productDetails.php?id=<?php echo $product['id']; ?>">
+                                    <i class="bx bx-show"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="add_to_cart.php?product_id=<?php echo $product['id']; ?>">
+                                    <i class="bx bx-cart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <?php
+                }
+            } else {
+                echo "<p>No new arrivals at the moment.</p>";
+            }
+            ?>
         </div>
     </section>
 
-
     <!-- Promo -->
-
     <section class="section banner">
         <div class="left">
             <span class="trend">Trend Design</span>
             <h1>New Collection 2022</h1>
             <p>New Arrival <span class="color">Sale 50% OFF</span> Limited Time Offer</p>
-            <a href="product.html" class="btn btn-1">Discover Now</a>
+            <a href="product.php" class="btn btn-1">Discover Now</a>
         </div>
         <div class="right">
             <img src="./images/banner.png" alt="">
@@ -257,93 +162,7 @@ include 'config.php'; // Ensure this path correctly points to your config file
 
 
 
-
-    <!-- Featured -->
-
-    <section class="section new-arrival">
-        <div class="title">
-            <h1>Featured</h1>
-            <p>All the latest picked from designer of our store</p>
-        </div>
-
-        <div class="product-center">
-            <div class="product-item">
-                <div class="overlay">
-                    <a href="" class="product-thumb">
-                        <img src="./images/product-7.jpg" alt="" />
-                    </a>
-                    <span class="discount">50%</span>
-                </div>
-                <div class="product-info">
-                    <span>MEN'S CLOTHES</span>
-                    <a href="">Quis Nostrud Exercitation</a>
-                    <h4>$700</h4>
-                </div>
-                <ul class="icons">
-                    <li><i class="bx bx-heart"></i></li>
-                    <li><i class="bx bx-search"></i></li>
-                    <li><i class="bx bx-cart"></i></li>
-                </ul>
-            </div>
-            <div class="product-item">
-                <div class="overlay">
-                    <a href="" class="product-thumb">
-                        <img src="./images/product-4.jpg" alt="" />
-                    </a>
-                </div>
-
-                <div class="product-info">
-                    <span>MEN'S CLOTHES</span>
-                    <a href="">Sonata White Men’s Shirt</a>
-                    <h4>$800</h4>
-                </div>
-                <ul class="icons">
-                    <li><i class="bx bx-heart"></i></li>
-                    <li><i class="bx bx-search"></i></li>
-                    <li><i class="bx bx-cart"></i></li>
-                </ul>
-            </div>
-            <div class="product-item">
-                <div class="overlay">
-                    <a href="" class="product-thumb">
-                        <img src="./images/product-1.jpg" alt="" />
-                    </a>
-                    <span class="discount">40%</span>
-                </div>
-                <div class="product-info">
-                    <span>MEN'S CLOTHES</span>
-                    <a href="">Concepts Solid Pink Men’s Polo</a>
-                    <h4>$150</h4>
-                </div>
-                <ul class="icons">
-                    <li><i class="bx bx-heart"></i></li>
-                    <li><i class="bx bx-search"></i></li>
-                    <li><i class="bx bx-cart"></i></li>
-                </ul>
-            </div>
-            <div class="product-item">
-                <div class="overlay">
-                    <a href="" class="product-thumb">
-                        <img src="./images/product-6.jpg" alt="" />
-                    </a>
-                </div>
-                <div class="product-info">
-                    <span>MEN'S CLOTHES</span>
-                    <a href="">Edor do eiusmod tempor</a>
-                    <h4>$900</h4>
-                </div>
-                <ul class="icons">
-                    <li><i class="bx bx-heart"></i></li>
-                    <li><i class="bx bx-search"></i></li>
-                    <li><i class="bx bx-cart"></i></li>
-                </ul>
-            </div>
-
-    </section>
-
-
     <?php include 'visitorfooter.php'; ?>
-
 
     <!-- Logout Confirmation Modal -->
     <div id="logoutModal" class="modal">
