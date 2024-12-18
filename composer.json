@@ -1,8 +1,8 @@
 {
-    "name": "hachisnail/retro-rack",
-    "description": "hahahahahahahah",
-    "type": "project",
-    "license": "MIT",
-    "minimum-stability": "stable",
-    "require": {}
+  "name": "hachisnail/the-retro-rack",
+  "description": "hahahahahahahah",
+  "type": "project",
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "require": {}
 }
