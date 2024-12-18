@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => 'hachisnail/the-retro-rack',
+        'name' => 'hachisnail/retro-rack',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '1880e3d6c0c5be78108941bc4c2f8612752fa769',
+        'reference' => 'ef8fbcb3bce42017d4c3cdb31c03b20fe38fa3df',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'hachisnail/the-retro-rack' => array(
+        'hachisnail/retro-rack' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '1880e3d6c0c5be78108941bc4c2f8612752fa769',
+            'reference' => 'ef8fbcb3bce42017d4c3cdb31c03b20fe38fa3df',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
